@@ -1,4 +1,7 @@
 import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Nav from './components/Nav';
 
 function App() {
   return (
@@ -8,7 +11,8 @@ function App() {
         refr<span style={{color:'cornflowerblue'}}>ai</span>m
       </p>
       </header>
-      
+      <Nav />
+ 
     </div>
   );
 }

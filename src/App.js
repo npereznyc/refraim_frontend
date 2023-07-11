@@ -2,9 +2,9 @@ import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Nav from './components/Nav';
-import ConversationBox from './components/ConversationBox';
-import Registration from './components/Registration';
 import Main from './components/Main';
+import Registration from './components/Registration';
+
 
 function App() {
   return (
@@ -17,9 +17,9 @@ function App() {
 
       
       <Routes>
-        <Route path='/register' element={<Registration />} />
+        <Route path='/register' element={<Registration/>} />
         <Route path='/' element={<Main />} />
-        {/* Add any other routes here */}
+        {/* Other routes here */}
       </Routes>
       <Nav />
     </div>

@@ -4,9 +4,14 @@ import { TextField } from 'formik-material-ui';
 import { Button } from '@mui/material';
 import { Formik, Field, Form } from 'formik'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
+
 
 export default function Registration() {
+    const navigate = useNavigate()
     return (
+        <>
+        <h1>Let's get you started</h1>
         <Formik
             initialValues={{
                 username: '',
@@ -19,9 +24,11 @@ export default function Registration() {
                 axios.post('http://localhost:8000/register/', values).then((response) => {
                     //will need to replace localhost with database url
                     console.log(response.data)
+                    localStorage.setItem('token', response.data.token)
                     alert("Registration successful!");
                     resetForm({});
                     setSubmitting(false)
+                    navigate('/')
                 }).catch((error) => {
                     console.error('There was an error', error)
                     //handle error here
@@ -29,14 +36,12 @@ export default function Registration() {
                 })
             }}
         >
-            {({ submitForm, isSubmitting }) => (
+            {({isSubmitting }) => (
                 <Form>
                     <Box
                         sx={{
                             '& .MuiTextField-root': { m: 1, width: '25ch' },
                         }}
-                    //   noValidate
-                    //   autoComplete="off"
                     >
                         <div>
                             <Field
@@ -49,6 +54,13 @@ export default function Registration() {
                             />
                             <Field
                                 required
+                                id="outlined-fist-name-input"
+                                component={TextField}
+                                name='first_name'
+                                label="First Name"
+                            />
+                            <Field
+                                required
                                 id="outlined-disabled"
                                 component={TextField}
                                 name='email'
@@ -56,36 +68,34 @@ export default function Registration() {
                                 type="email"
                             />
                             <Field
+                                required
                                 id="outlined-password-input"
                                 component={TextField}
                                 name='password'
                                 label="Password"
                                 type="password"
                                 autoComplete="current-password"
-                            />
-                            <Field
-                                id="outlined-fist-name-input"
-                                component={TextField}
-                                name='first_name'
-                                label="First Name"
-                            />
+                            />                          
                             <Field
                                 id="outlined-last-name-input"
-                                component={TextField}
+                                type="hidden"
                                 name='last_name'
-                                label="Last Name"
+                                
                             />
                             <Button
                                 type="submit"
                                 variant="contained"
                                 color="primary"
-                                style={{ marginTop: '1em' }}>
-                                Register
+                                style={{ marginTop: '1em' }}
+                                disabled={isSubmitting}>
+                                Create Account
                             </Button>
                         </div>
                     </Box>
                 </Form>
             )}
         </Formik>
+        </>
+        
     );
 }

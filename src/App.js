@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Nav from './components/Nav';
 import Main from './components/Main';
 import Registration from './components/Registration';
+import Welcome from './pages/Welcome';
+import Disclaimer from './pages/Disclaimer';
+import RefraimSession from './pages/RefraimSession';
 
 
 function App() {
@@ -18,10 +21,12 @@ function App() {
       
       <Routes>
         <Route path='/register' element={<Registration/>} />
-        <Route path='/' element={<Main />} />
+        <Route path='/' element={<Disclaimer />} />
+        <Route path='/welcome' element={<Welcome />} />
+        <Route path='/session' element={<RefraimSession />} />
         {/* Other routes here */}
       </Routes>
-      <Nav />
+      
     </div>
   );
 }

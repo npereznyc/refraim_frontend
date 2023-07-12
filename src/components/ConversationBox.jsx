@@ -34,6 +34,7 @@ function ConversationBox() {
         setTimeout(() => {
             // Simulate the AI response:
             const aiResponse = 'Here are some ways we can reframe that thought... ';
+            //fetch call to our API endpoint that will then call to OpenAI - allconversations/<int:id>/
             setMessages(oldMessages => [...oldMessages, { text: aiResponse, sender: "Refraim" }]);
             // Update the state with the AI response and stop the loading spinner:
             // setRefreameText(aiResponse);

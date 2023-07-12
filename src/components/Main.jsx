@@ -7,6 +7,7 @@ function Main() {
   return (
     <div className="App">
       <ConversationBox />
+      <Nav />
  
     </div>
   );

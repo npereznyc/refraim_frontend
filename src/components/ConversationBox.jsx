@@ -23,14 +23,14 @@ function ConversationBox() {
     }
     return (
         <section id="convo-container">
-            <div class="setup-inner">
-                <div class="speech-bubble-ai" id="speech-bubble-ai">
+            <div className="setup-inner">
+                <div className="speech-bubble-ai" id="speech-bubble-ai">
                     <p id="convo-boss-text">
                         Share a negative thought you've been having and let's see if we can reframe it.
                     </p>
                 </div>
             </div>
-            <div class="setup-inner setup-input-container" id="setup-input-container">
+            <div className="setup-inner setup-input-container" id="setup-input-container">
                 <TextField id="outlined-basic" label="ype your negative thought here" variant="outlined" onChange={handleInputChange} />
                 <Button variant="outlined" onClick={handleButtonClick}>Send</Button>
 

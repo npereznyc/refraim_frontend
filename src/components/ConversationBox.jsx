@@ -9,33 +9,51 @@ function ConversationBox() {
     const [userInput, setUserInput] = useState('')
     const [ReframeText, setRefreameText] = useState('')
     const [loading, setLoading] = useState(false)
+    const [messages, setMessages] = useState([])
 
     const handleButtonClick = () => {
         if (userInput) {
             setLoading(true)
+            setMessages([...messages, { text: userInput, sender: "user" }])
             setRefreameText('Ok, give me a moment while my digital brain digests that...')
-            // fetchBotReply(userInput)
+            fetchBotReply(userInput)
+            setUserInput('')
             // fetchSynopsis(userInput)
         }
     }
     const handleInputChange = (event) => {
         setUserInput(event.target.value)
     }
+
+    async function fetchBotReply(userInput) {
+        // Simulating delay with setTimeout - will replace this with actual API request
+        // Delay represents time we're waiting for the AI to respond
+        setTimeout(() => {
+            // Simulate the AI response:
+            const aiResponse = 'Here are some ways we can reframe that thought... ';
+            setMessages([...messages, { text: aiResponse, sender: "Refraim" }]);
+            // Update the state with the AI response and stop the loading spinner:
+            setRefreameText(aiResponse);
+            setLoading(false);
+        }, 2000);  // 2 seconds delay
+
+    }
     return (
         <section id="convo-container">
-            <div className="setup-inner">
-                <div className="speech-bubble-ai" id="speech-bubble-ai">
-                    <p id="convo-boss-text">
-                        Share a negative thought you've been having and let's see if we can reframe it.
-                    </p>
-                </div>
-            </div>
             <div className="setup-inner setup-input-container" id="setup-input-container">
-                <TextField id="outlined-basic" label="ype your negative thought here" variant="outlined" onChange={handleInputChange} />
-                <Button variant="outlined" onClick={handleButtonClick}>Send</Button>
+
+
+                <p>{ReframeText}</p>
 
                 <div id="setupInputContainer">{loading && <img src={loadingImage} className="loading" id="loading" />}</div>
-                <p>{ReframeText}</p>
+                {messages.map((message, index) => (
+                    <p key={index} className={message.sender}>
+                        {message.text}
+                    </p>
+                ))}
+
+                <TextField id="outlined-basic" label="What are you thinking..." variant="outlined" onChange={handleInputChange} />
+                <Button variant="outlined" onClick={handleButtonClick}>Send</Button>
             </div>
         </section>
     );

@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.App-main {
+  padding: 20px;
+}
+
 .App-header {
   /* min-height: 100vh; */
   display: flex;

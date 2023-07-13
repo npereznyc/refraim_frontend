@@ -15,12 +15,17 @@ function Main() {
   let {user} = useContext(AuthContext)
   return (
     <div className="App">
+      <header className="App-header">
+        <p>
+          refr<span style={{ color: 'cornflowerblue' }}>ai</span>m
+        </p>
+      </header> 
       <Routes>
         <Route path='/register' element={<Registration />} />
         <Route path='login' element={<Login />} />
         <Route path='/' element={<Disclaimer />} />
         <Route path='/welcome' element={<Welcome />} />
-        <Route path='/session' element={!user ? <Navigate to="/" /> : <RefraimSession />} />
+        <Route path='/session' element={!user ? <Navigate to="/welcome" /> : <RefraimSession />} />
         <Route path='history/:id' element={<AllConversations />}/>
         {/* Other routes here */}
       </Routes>

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import React from 'react';
 import { Button } from '@mui/material';
 import Registration from './Registration';
+import GoogleLogin from '../components/GoogleLogin';
 
 
 
@@ -9,6 +10,7 @@ function Welcome() {
     return (
         <div className="welcome">
             <h1>Create your account to get started</h1>
+            <GoogleLogin />
             <Button
                 type="submit"
                 variant="outlined"

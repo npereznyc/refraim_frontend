@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "@mui/material";
 
 function GoogleLogin() {
     const REACT_APP_GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
@@ -23,9 +24,16 @@ function GoogleLogin() {
         window.location = `${googleAuthUrl}?${urlParams}`;
     }
     return (
-        <button onClick={onGoogleSucess}>
-            Sign in with Google
-        </button>
+        <>
+        <Button
+                type="submit"
+                variant="outlined"
+                color="primary"
+                onClick={onGoogleSucess}
+                style={{ marginTop: '1em' }}>
+                Sign in with Google
+            </Button>
+        </>
     )
 }
 

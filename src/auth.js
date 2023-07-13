@@ -5,11 +5,17 @@ import { createContext, useState, useEffect } from "react";
 const AuthContext = createContext()
 
 const AuthProvider = ({ children}) => {
+    const [loading, setLoading] = useState(false);
+    const [accessToken, setAccessToken] = useState(() =>
+      localStorage.getItem('access_token')
+      ? JSON.parse(localStorage.getItem('access_token'))
+      : null
+    )
     const [user, setUser] = useState(()=>
       localStorage.getItem('access_token')
       ? jwt_decode(localStorage.getItem('access-token'))
       : null
-    )
+    );
   
     const register = async (username, password, email, first_name, last_name) => {
       try {
@@ -58,12 +64,22 @@ const AuthProvider = ({ children}) => {
         // Maybe re-throw it or return a value indicating failure
       }
     };
-  
+
     contextData = {
       user,
       login,
       register,
     }
+
+    useEffect(() => {
+      setLoading(true)
+      if (accessToken) {
+        setUser(jwt_decode(accessToken))
+      }
+      setLoading(false)
+    }, [accessToken])
+
+    if(loading) return<p>User Info Loading</p>
 
     return(
       <AuthContext.Provider value={contextData}>

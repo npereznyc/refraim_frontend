@@ -27,22 +27,35 @@ function ConversationBox() {
         }
     }
 
-
     async function fetchBotReply(userInput) {
-        // Simulating delay with setTimeout - will replace this with actual API request
-        // Delay represents time we're waiting for the AI to respond
-        setTimeout(() => {
-            // Simulate the AI response:
-            const aiResponse = 'Here are some ways we can reframe that thought... ';
-            //fetch call to our API endpoint that will then call to OpenAI - allconversations/<int:id>/
+        setLoading(true);
+        setMessages([...messages, { text: userInput, sender: "user" }]);
+    
+        // Make a POST request to your backend
+        const response = await fetch('http://localhost:8000/allconversations/2/', {
+            //update url with <id>
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                // Include your token in the 'Authorization' header
+                // 'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+            },
+            body: JSON.stringify({ prompt: userInput })
+        });
+    
+        if (response.ok) {
+            const data = await response.json();
+            // Assuming the response data contains the AI's response
+            const aiResponse = data.refraim;
             setMessages(oldMessages => [...oldMessages, { text: aiResponse, sender: "Refraim" }]);
-            // Update the state with the AI response and stop the loading spinner:
-            // setRefreameText(aiResponse);
-            setLoading(false);
-        }, 2000);  // 2 seconds delay
-
-
+        } else {
+            // Handle error
+            console.error('Error:', response);
+        }
+    
+        setLoading(false);
     }
+  
     return (
         <section id="convo-container">
             <div className="setup-inner setup-input-container" id="setup-input-container">
@@ -56,7 +69,7 @@ function ConversationBox() {
                         {message.text}
                     </p>
                 ))}
-                {userMessages.length < 2 && (
+                {userMessages.length < 1 && (
                     <>
                         <TextField
                             id="outlined-basic"

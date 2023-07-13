@@ -11,6 +11,8 @@ import axios from 'axios';
 import GoogleLogin from './components/GoogleLogin';
 import { AuthProvider } from './auth';
 import AuthContext from './auth';
+import Login from './pages/Login';
+import AllConversations from './pages/SessionHistory';
 
 
 function App() {
@@ -39,16 +41,17 @@ function App() {
         <GoogleLogin/>
       </header>
 
-      <AuthProvider>
-        <Routes>
-          <Route path='/register' element={<Registration />} />
-          <Route path='/' element={<Disclaimer />} />
-          <Route path='/welcome' element={<Welcome />} />
-          <Route path='/session' element={!user ? <Navigate to="/" /> : <RefraimSession />} />
-          {/* Other routes here */}
-        </Routes>
-      </AuthProvider>
-
+    <AuthProvider>
+      <Routes>
+        <Route path='/register' element={<Registration />} />
+        <Route path='login' element={<Login />} />
+        <Route path='/' element={<Disclaimer />} />
+        <Route path='/welcome' element={<Welcome />} />
+        <Route path='/session' element={!user ? <Navigate to="/" /> : <RefraimSession />} />
+        <Route path='history/:id' element={<AllConversations />}/>
+        {/* Other routes here */}
+      </Routes>
+    </AuthProvider>
     </div>
   );
 }

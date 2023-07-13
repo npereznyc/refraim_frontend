@@ -1,6 +1,6 @@
 import './App.css';
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useContext } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Nav from './components/Nav';
 import Main from './pages/Main';
 import Registration from './pages/Registration';
@@ -9,6 +9,8 @@ import Disclaimer from './pages/Disclaimer';
 import RefraimSession from './pages/RefraimSession';
 import axios from 'axios';
 import GoogleLogin from './components/GoogleLogin';
+import { AuthProvider } from './auth';
+import AuthContext from './auth';
 
 
 function App() {
@@ -26,6 +28,8 @@ function App() {
     config.headers['Content-Type'] = 'application/json';
     return config;
   });
+
+  let {user} = useContext(AuthContext)
   return (
     <div className="App">
       <header className="App-header">
@@ -35,14 +39,15 @@ function App() {
         <GoogleLogin/>
       </header>
 
-
-      <Routes>
-        <Route path='/register' element={<Registration />} />
-        <Route path='/' element={<Disclaimer />} />
-        <Route path='/welcome' element={<Welcome />} />
-        <Route path='/session' element={<RefraimSession />} />
-        {/* Other routes here */}
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path='/register' element={<Registration />} />
+          <Route path='/' element={<Disclaimer />} />
+          <Route path='/welcome' element={<Welcome />} />
+          <Route path='/session' element={!user ? <Navigate to="/" /> : <RefraimSession />} />
+          {/* Other routes here */}
+        </Routes>
+      </AuthProvider>
 
     </div>
   );

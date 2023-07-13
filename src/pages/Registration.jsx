@@ -3,7 +3,6 @@ import Box from '@mui/material/Box';
 import { TextField } from 'formik-material-ui';
 import { Button } from '@mui/material';
 import { Formik, Field, Form } from 'formik';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { register } from '../auth';
 

@@ -8,6 +8,7 @@ import Welcome from './pages/Welcome';
 import Disclaimer from './pages/Disclaimer';
 import RefraimSession from './pages/RefraimSession';
 import axios from 'axios';
+import GoogleLogin from './components/GoogleLogin';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <p>
           refr<span style={{ color: 'cornflowerblue' }}>ai</span>m
         </p>
+        <GoogleLogin/>
       </header>
 
 

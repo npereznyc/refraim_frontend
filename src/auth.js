@@ -1,3 +1,4 @@
+import React  from 'react';
 import axios from "axios";
 import jwt_decode from 'jwt-decode';
 import { createContext, useState, useEffect } from "react";
@@ -14,7 +15,7 @@ export const AuthProvider = ({ children}) => {
     )
     const [user, setUser] = useState(()=>
       localStorage.getItem('access_token')
-      ? jwt_decode(localStorage.getItem('access-token'))
+      ? jwt_decode(localStorage.getItem('access_token'))
       : null
     );
   
@@ -45,6 +46,8 @@ export const AuthProvider = ({ children}) => {
   
         if (response.status === 200) {
           const { access, refresh } = response.data;
+          setAccessToken(access)
+          setUser(jwt_decode(access))
           localStorage.setItem('access_token', access);
           localStorage.setItem('refresh_token', refresh);
   
@@ -66,7 +69,7 @@ export const AuthProvider = ({ children}) => {
       }
     };
 
-    contextData = {
+    const contextData = {
       user,
       login,
       register,

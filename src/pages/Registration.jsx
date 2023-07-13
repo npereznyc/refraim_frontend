@@ -1,12 +1,14 @@
 import * as React from 'react';
+import { useContext } from 'react';
 import Box from '@mui/material/Box';
 import { TextField } from 'formik-material-ui';
 import { Button } from '@mui/material';
 import { Formik, Field, Form } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import { register } from '../auth';
+import AuthContext from '../auth';
 
 export default function Registration() {
+  let {register} = useContext(AuthContext)
   const navigate = useNavigate();
 
   const onSubmit = async (values, { setSubmitting, resetForm }) => {

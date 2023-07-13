@@ -8,6 +8,7 @@ import Welcome from './pages/Welcome';
 import Disclaimer from './pages/Disclaimer';
 import RefraimSession from './pages/RefraimSession';
 import axios from 'axios';
+import Login from './pages/Login';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
 
       <Routes>
         <Route path='/register' element={<Registration />} />
+        <Route path='login' element={<Login />} />
         <Route path='/' element={<Disclaimer />} />
         <Route path='/welcome' element={<Welcome />} />
         <Route path='/session' element={<RefraimSession />} />

@@ -49,6 +49,5 @@ const login = async (username, password) => {
       // Maybe re-throw it or return a value indicating failure
     }
   };
-  
 
 export { register, login }

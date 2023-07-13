@@ -4,9 +4,10 @@ import { TextField } from 'formik-material-ui';
 import { Button } from '@mui/material';
 import { Formik, Field, Form } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../auth';
+import AuthContext from '../auth';
 
 export default function Login() {
+  let {login} = useContext(AuthContext) 
   const navigate = useNavigate();
 
   const onSubmit = async (values, { setSubmitting }) => {

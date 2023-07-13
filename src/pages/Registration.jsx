@@ -25,7 +25,7 @@ export default function Registration() {
         alert('Registration successful!');
         resetForm({});
         setSubmitting(false);
-        navigate('/session');
+        navigate('/pre-prompt');
       } else {
         throw new Error('Registration failed');
       }

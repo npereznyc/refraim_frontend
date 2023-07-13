@@ -16,7 +16,7 @@ export default function Login() {
       // Here you might want to do something with the response
       // Maybe set a user state or redirect the user
       if (response) {
-        navigate('/session');
+        navigate('/pre-prompt');
       }
     } catch (error) {
       console.error('There was an error', error);

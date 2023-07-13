@@ -13,6 +13,7 @@ import { AuthProvider } from './auth';
 import AuthContext from './auth';
 import Login from './pages/Login';
 import AllConversations from './pages/SessionHistory';
+import PrePrompt from './pages/PrePrompt';
 
 
 function App() {

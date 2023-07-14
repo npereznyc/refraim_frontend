@@ -35,7 +35,7 @@ function ConversationBox() {
         setMessages([...messages, { text: userInput, sender: "user" }]);
     
         // Make a POST request to your backend
-        const response = await fetch(`http://localhost:8000/allconversations/${user.user_id}/`, {
+        const response = await fetch(`http://localhost:8000/allconversations/${user.user_id || user.id}/`, {
             //update url with <id>
             method: 'POST',
             headers: {

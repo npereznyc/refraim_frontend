@@ -11,22 +11,13 @@ export default function Login() {
   let {login} = useContext(AuthContext) 
   const navigate = useNavigate();
 
-  const onSubmit = async (values, { setSubmitting }) => {
-    try {
-      const response = await login(values.username, values.password);
-      console.log(response);
+  const onSubmit = (values, { setSubmitting }) => {
+      login(values.username, values.password);
       // Here you might want to do something with the response
       // Maybe set a user state or redirect the user
-      if (response) {
-        navigate('/pre-prompt');
-      }
-    } catch (error) {
-      console.error('There was an error', error);
-      // Here you might want to do something with the error
-      // Maybe show an error message to the user
+      
+      setSubmitting(false);
     }
-    setSubmitting(false);
-  }
 
   return (
     <>

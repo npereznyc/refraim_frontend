@@ -20,8 +20,7 @@ function Disclaimer() {
                 variant="contained"
                 color="primary"
                 href="/welcome/"
-                style={{ marginTop: '1em' }}
-                sx={{ textTransform: 'none' }} >
+                style={{ marginTop: '1em' }} >
                 I understand
             </Button>
         </div>

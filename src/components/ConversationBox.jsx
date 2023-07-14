@@ -9,7 +9,6 @@ import { useContext } from 'react';
 
 function ConversationBox() {
     const [userInput, setUserInput] = useState('')
-    // const [ReframeText, setRefreameText] = useState('')
     const [loading, setLoading] = useState(false)
     const [messages, setMessages] = useState([])
     const userMessages = messages.filter(message => message.sender === "user")
@@ -24,7 +23,6 @@ function ConversationBox() {
         if (userInput) {
             setLoading(true)
             setMessages([...messages, { text: userInput, sender: "user" }])
-            // setRefreameText('Ok, give me a moment while my digital brain digests that...')
             fetchBotReply(userInput)
             setUserInput('')
         }
@@ -40,8 +38,8 @@ function ConversationBox() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                // Include your token in the 'Authorization' header
-                // 'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+                // Include your token in the 'Authorization' header:
+                'Authorization': `Bearer ${localStorage.getItem('access_token')}`
             },
             body: JSON.stringify({ prompt: userInput })
         });
@@ -62,9 +60,6 @@ function ConversationBox() {
     return (
         <section id="convo-container">
             <div className="setup-inner setup-input-container" id="setup-input-container">
-
-
-                {/* <p>{ReframeText}</p> */}
 
                 <div id="setupInputContainer">{loading && <img src={loadingImage} className="loading" id="loading" />}</div>
                 {messages.map((message, index) => (

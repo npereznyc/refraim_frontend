@@ -60,6 +60,7 @@ export default function Login() {
                   variant="contained"
                   color="primary"
                   style={{ marginTop: '1em' }}
+                  sx={{ textTransform: 'none' }}
                   disabled={isSubmitting}
                 >
                   Log in

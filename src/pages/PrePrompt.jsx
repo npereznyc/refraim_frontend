@@ -8,11 +8,11 @@ import Registration from './Registration';
 function PrePrompt() {
     return (
         <div className="welcome">
-            <h1>What's on your mind?</h1>
+            <p>Whats on your mind? <br/> How can I help you think differently about this? <br/> Choose the most relevant topic below.</p>
             <Button
                 type="submit"
-                variant="outlined"
-                color="primary"
+                variant="contained"
+                color="background"
                 href="/session/"
                 style={{ marginTop: '1em' }}>
                 Negative self-talk
@@ -20,8 +20,8 @@ function PrePrompt() {
             <br />
             <Button
                 type="submit"
-                variant="outlined"
-                color="primary"
+                variant="contained"
+                color="background"
                 href="/session/"
                 style={{ marginTop: '1em' }}>
                 Relationship issue
@@ -29,8 +29,8 @@ function PrePrompt() {
             <br />
             <Button
                 type="submit"
-                variant="outlined"
-                color="primary"
+                variant="contained"
+                color="background"
                 href="/session/"
                 style={{ marginTop: '1em' }}>
                 Work issue
@@ -38,8 +38,8 @@ function PrePrompt() {
             <br />
             <Button
                 type="submit"
-                variant="outlined"
-                color="primary"
+                variant="contained"
+                color="background"
                 href="/session/"
                 style={{ marginTop: '1em' }}>
                 Other issue

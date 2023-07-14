@@ -31,6 +31,15 @@ const theme = createTheme({
     fontFamily: 'Nunito (20 Bold)',
     color: '#123356'
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: { // applied to the root element.
+          textTransform: 'none',
+        },
+      },
+    },
+  },
 });
 
 function App() {

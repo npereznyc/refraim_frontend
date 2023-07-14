@@ -2,15 +2,17 @@ import React  from 'react';
 import axios from "axios";
 import jwt_decode from 'jwt-decode';
 import { createContext, useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext()
 export default AuthContext;
 
 export const AuthProvider = ({ children}) => {
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [accessToken, setAccessToken] = useState(() =>
       localStorage.getItem('access_token')
-      ? JSON.parse(localStorage.getItem('access_token'))
+      ? localStorage.getItem('access_token')
       : null
     )
     const [user, setUser] = useState(()=>
@@ -38,35 +40,34 @@ export const AuthProvider = ({ children}) => {
     };
 
     const login = async (username, password) => {
-      try {
-        const response = await axios.post('http://localhost:8000/token/', {
-        username,
-        password,
-        });
+        try {
+            const response = await axios.post('http://localhost:8000/token/', {
+              username,
+              password,
+            });
   
-        if (response.status === 200) {
-          const { access, refresh } = response.data;
-          setAccessToken(access)
-          setUser(jwt_decode(access))
-          localStorage.setItem('access_token', access);
-          localStorage.setItem('refresh_token', refresh);
+            if (response.status === 200) {
+                const { access, refresh } = response.data;
+                setAccessToken(access)
+                setUser(jwt_decode(access))
+                localStorage.setItem('access_token', access);
+                localStorage.setItem('refresh_token', refresh);
   
-          // Decode the access token
-          const decodedToken = jwt_decode(access);
-          const username = decodedToken.username;
-          const userId = decodedToken.user_id;
+                // Decode the access token
+                const decodedToken = jwt_decode(access);
+                navigate('/pre-prompt');
+                // const username = decodedToken.username;
+                // const userId = decodedToken.user_id;
   
-          // Return the decoded token information
-          console.log('username: ', username, 'userId: ', userId)
-          return { username, userId };
-          } else {
-        // Handle error, user was not logged in
+                // Return the decoded token information
+            } else {
+                // Handle error, user was not logged in
+            }
+        } catch (error) {
+            console.error('Error during login:', error);
+            // Here you might want to do something with the error
+            // Maybe re-throw it or return a value indicating failure
         }
-      } catch (error) {
-        console.error('Error during login:', error);
-        // Here you might want to do something with the error
-        // Maybe re-throw it or return a value indicating failure
-      }
     };
 
     const contextData = {

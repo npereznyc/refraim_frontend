@@ -35,7 +35,7 @@ function ConversationBox() {
         setMessages([...messages, { text: userInput, sender: "user" }]);
     
         // Make a POST request to your backend
-        const response = await fetch(` https://refraimbackend-d7bf67f60222.herokuapp.com/allconversations/${user.user_id || user.id}/`, {
+        const response = await fetch(`https://refraimbackend-d7bf67f60222.herokuapp.com/allconversations/${user.user_id || user.id}/`, {
             //update url with <id>
             method: 'POST',
             headers: {

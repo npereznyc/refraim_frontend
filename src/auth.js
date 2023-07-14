@@ -32,7 +32,7 @@ export const AuthProvider = ({ children}) => {
   
     const register = async (username, password, email, first_name, last_name) => {
       try {
-        const response = await axios.post(' https://refraimbackend-d7bf67f60222.herokuapp.com/register/', {
+        const response = await axios.post('https://refraimbackend-d7bf67f60222.herokuapp.com/register/', {
         username,
         password,
         email,
@@ -50,7 +50,7 @@ export const AuthProvider = ({ children}) => {
 
     const login = async (username, password) => {
         try {
-            const response = await axios.post('h https://refraimbackend-d7bf67f60222.herokuapp.com/token/', {
+            const response = await axios.post('https://refraimbackend-d7bf67f60222.herokuapp.com/token/', {
               username,
               password,
             });

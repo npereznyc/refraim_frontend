@@ -8,16 +8,25 @@ const AuthContext = createContext()
 export default AuthContext;
 
 export const AuthProvider = ({ children}) => {
+    const getCookie = () => {
+      const token = document.cookie.split('=')
+      return token[1] 
+    }
+
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [accessToken, setAccessToken] = useState(() =>
       localStorage.getItem('access_token')
       ? localStorage.getItem('access_token')
+      : document.cookie
+      ? getCookie()
       : null
     )
     const [user, setUser] = useState(()=>
       localStorage.getItem('access_token')
       ? jwt_decode(localStorage.getItem('access_token'))
+      : document.cookie
+      ? jwt_decode(getCookie())
       : null
     );
   

@@ -72,7 +72,7 @@ function ConversationBox() {
                         {message.text}
                     </p>
                 ))}
-                {userMessages.length < 1 && (
+                {userMessages.length < 1 ? (
                     <>
                         <TextField
                             id="outlined-basic"
@@ -80,10 +80,14 @@ function ConversationBox() {
                             variant="outlined"
                             value={userInput}
                             onChange={handleInputChange} />
+                            <br/>
+                            <br/>
                         <Button
-                            variant="outlined"
+                            variant="contained"
                             onClick={handleButtonClick}>Send</Button>
                     </>
+                ) : (
+                    <Button variant="contained">Complete</Button>
                 )}
 
             </div>

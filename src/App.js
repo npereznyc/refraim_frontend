@@ -31,10 +31,10 @@ function App() {
         <p>
           refr<span style={{ color: 'cornflowerblue' }}>ai</span>m
         </p>
-        <GoogleLogin/>
       </header> */}
 
     <AuthProvider>
+      
       <Main/>
     </AuthProvider>
     </div>

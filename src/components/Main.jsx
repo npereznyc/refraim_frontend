@@ -8,7 +8,7 @@ import Login from '../pages/Login';
 import AllConversations from '../pages/SessionHistory';
 import AuthContext from '../auth';
 import { useContext } from 'react';
-import PrePrompt from './PrePrompt';
+import PrePrompt from '../pages/PrePrompt';
 
 function Main() {
   let {user} = useContext(AuthContext)

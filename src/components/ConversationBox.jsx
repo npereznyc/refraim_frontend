@@ -87,7 +87,8 @@ function ConversationBox() {
                             onClick={handleButtonClick}>Send</Button>
                     </>
                 ) : (
-                    <Button variant="contained">Complete</Button>
+                    <Button variant="contained"
+                    href='/complete'>Complete</Button>
                 )}
 
             </div>

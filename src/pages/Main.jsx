@@ -11,6 +11,7 @@ import { useContext } from 'react';
 import PrePrompt from './PrePrompt';
 import { Typography } from '@mui/material';
 import { useTheme } from '@mui/material';
+import Complete from './Complete';
 
 
 function Main() {
@@ -30,6 +31,7 @@ function Main() {
         <Route path='/pre-prompt' element={!user ? <Navigate to="/welcome" /> : <PrePrompt />} />
         <Route path='/session' element={!user ? <Navigate to="/welcome" /> : <RefraimSession />} />
         <Route path='history/:id' element={<AllConversations />}/>
+        <Route path='/complete' element={<Complete />} />
       </Routes>
     </div>
   );

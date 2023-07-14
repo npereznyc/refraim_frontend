@@ -3,6 +3,8 @@ import { useState } from "react"
 import loadingImage from '../assets/loading.svg'
 import Button from '@mui/material/Button';
 import { TextField } from "@mui/material";
+import AuthContext from '../auth';
+import { useContext } from 'react';
 
 
 function ConversationBox() {
@@ -11,6 +13,7 @@ function ConversationBox() {
     const [loading, setLoading] = useState(false)
     const [messages, setMessages] = useState([])
     const userMessages = messages.filter(message => message.sender === "user")
+    let {user} = useContext(AuthContext)
 
 
     const handleInputChange = (event) => {
@@ -32,7 +35,7 @@ function ConversationBox() {
         setMessages([...messages, { text: userInput, sender: "user" }]);
     
         // Make a POST request to your backend
-        const response = await fetch('http://localhost:8000/allconversations/2/', {
+        const response = await fetch(`http://localhost:8000/allconversations/${user.user_id}/`, {
             //update url with <id>
             method: 'POST',
             headers: {

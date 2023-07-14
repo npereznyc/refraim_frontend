@@ -27,10 +27,11 @@ function GoogleLogin() {
         <>
         <Button
                 type="submit"
-                variant="outlined"
+                variant="contained"
                 color="primary"
                 onClick={onGoogleSucess}
-                style={{ marginTop: '1em' }}>
+                style={{ marginTop: '1em' }}
+                sx={{ textTransform: 'none' }}>
                 Sign in with Google
             </Button>
         </>

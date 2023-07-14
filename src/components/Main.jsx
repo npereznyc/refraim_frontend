@@ -10,15 +10,17 @@ import AuthContext from '../auth';
 import { useContext } from 'react';
 import PrePrompt from '../pages/PrePrompt';
 
+
 function Main() {
   let {user} = useContext(AuthContext)
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          refr<span style={{ color: 'cornflowerblue' }}>ai</span>m
-        </p>
+      <Typography color="primary">Refr<span style={{ color: theme.palette.secondary.main }}>ai</span>m</Typography>
+
+      <p>Refr<span style={{ color: theme.palette.secondary.main }}>ai</span>m</p>
       </header> 
+
       <Routes>
         <Route path='/' element={<Disclaimer />} />
         <Route path='/welcome' element={<Welcome />} />

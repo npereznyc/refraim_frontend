@@ -101,6 +101,7 @@ export default function Registration() {
                   variant="contained"
                   color="primary"
                   style={{ marginTop: '1em' }}
+                  sx={{ textTransform: 'none' }}
                   disabled={isSubmitting}
                 >
                   Create Account

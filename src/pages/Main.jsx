@@ -9,15 +9,18 @@ import AllConversations from '../pages/SessionHistory';
 import AuthContext from '../auth';
 import { useContext } from 'react';
 import PrePrompt from './PrePrompt';
+import { Typography } from '@mui/material';
+import { useTheme } from '@mui/material';
+
 
 function Main() {
+  const theme = useTheme()
   let {user} = useContext(AuthContext)
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          refr<span style={{ color: 'cornflowerblue' }}>ai</span>m
-        </p>
+      <Typography >Refr<span style={{ color: theme.palette.secondary.main }}>ai</span>m</Typography>
+ 
       </header> 
       <Routes>
         <Route path='/' element={<Disclaimer />} />

@@ -1,14 +1,40 @@
 import './App.css';
-import React  from 'react';
+import React from 'react';
 import Nav from './components/Nav';
 import Main from './pages/Main';
 import axios from 'axios';
-import GoogleLogin from './components/GoogleLogin';
 import { AuthProvider } from './auth';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useTheme } from '@mui/material/styles';
+import { Box } from '@mui/system';
 
 
+
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#FFCA3B',
+    },
+    secondary: {
+      main: '#4845E1',
+    },
+    background: {
+      default: '#F3F6FF',
+    }
+  },
+  text: {
+    primary: '#123356',
+    secondary: '#AFAFAF'
+  },
+  typography: {
+    fontFamily: 'Nunito (20 Bold)',
+    color: '#123356'
+  },
+});
 
 function App() {
+
   // Set up interceptor that attaches a token to every request:
   axios.interceptors.request.use((config) => {
     // Get the token from local storage
@@ -24,19 +50,16 @@ function App() {
     return config;
   });
 
-  
-  return (
-    <div className="App">
-      {/* <header className="App-header">
-        <p>
-          refr<span style={{ color: 'cornflowerblue' }}>ai</span>m
-        </p>
-      </header> */}
 
-    <AuthProvider>
-      
-      <Main/>
-    </AuthProvider>
+  return (
+    <div className="App" style={{ 
+      backgroundColor: theme.palette.background.default,
+      padding: theme.spacing(3) }}>
+      <ThemeProvider theme={theme}>
+        <AuthProvider>
+          <Main />
+        </AuthProvider>
+      </ThemeProvider>
     </div>
   );
 }

@@ -27,12 +27,12 @@ function App() {
   
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header">
         <p>
           refr<span style={{ color: 'cornflowerblue' }}>ai</span>m
         </p>
         <GoogleLogin/>
-      </header>
+      </header> */}
 
     <AuthProvider>
       <Main/>

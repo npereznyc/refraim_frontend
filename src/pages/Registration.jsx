@@ -87,6 +87,7 @@ export default function Registration() {
                   label="Email"
                   type="email"
                 />
+                
                 <Field
                   required
                   id="outlined-password-input"
@@ -96,6 +97,7 @@ export default function Registration() {
                   type="password"
                   autoComplete="current-password"
                 />
+                <p>* Password must be at least 9 characters, can’t be all numbers, and can't be too common (ex. password1234)</p>
                 <Field
                   id="outlined-last-name-input"
                   type="hidden"

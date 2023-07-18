@@ -4,6 +4,10 @@ import jwt_decode from 'jwt-decode';
 import { createContext, useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 
+const API_URL = process.env.NODE_ENV === 'development' 
+  ? 'http://localhost:8000' // Your local Django server's URL
+  : 'https://refraimbackend-d7bf67f60222.herokuapp.com'; // Your deployed Django server's URL
+
 const AuthContext = createContext()
 export default AuthContext;
 
@@ -32,7 +36,7 @@ export const AuthProvider = ({ children}) => {
   
     const register = async (username, password, email, first_name, last_name) => {
       try {
-        const response = await axios.post('https://refraimbackend-d7bf67f60222.herokuapp.com/register/', {
+        const response = await axios.post(`${API_URL}/register/`, {
         username,
         password,
         email,
@@ -50,7 +54,7 @@ export const AuthProvider = ({ children}) => {
 
     const login = async (username, password) => {
         try {
-            const response = await axios.post('https://refraimbackend-d7bf67f60222.herokuapp.com/token/', {
+            const response = await axios.post(`${API_URL}/token/`, {
               username,
               password,
             });
@@ -81,6 +85,7 @@ export const AuthProvider = ({ children}) => {
 
     const contextData = {
       user,
+      setUser,
       login,
       register,
     }

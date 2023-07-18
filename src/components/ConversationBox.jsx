@@ -6,6 +6,9 @@ import { TextField } from "@mui/material";
 import AuthContext from '../auth';
 import { useContext } from 'react';
 
+const API_URL = process.env.NODE_ENV === 'development' 
+  ? 'http://localhost:8000' // Your local Django server's URL
+  : 'https://refraimbackend-d7bf67f60222.herokuapp.com'; // Your deployed Django server's URL
 
 function ConversationBox() {
     const [userInput, setUserInput] = useState('')
@@ -32,9 +35,8 @@ function ConversationBox() {
         setLoading(true);
         setMessages([...messages, { text: userInput, sender: "user" }]);
     
-        // Make a POST request to your backend
-        const response = await fetch(`https://refraimbackend-d7bf67f60222.herokuapp.com/allconversations/${user.user_id || user.id}/`, {
-            //update url with <id>
+        // Make a POST request to backend
+        const response = await fetch(`${API_URL}/allconversations/${user.user_id || user.id}/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

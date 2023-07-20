@@ -9,13 +9,11 @@ import AuthContext from '../auth';
 
 export default function Login() {
   let {login} = useContext(AuthContext) 
-  const navigate = useNavigate();
 
   const onSubmit = (values, { setSubmitting }) => {
       login(values.username, values.password);
       // Here you might want to do something with the response
       // Maybe set a user state or redirect the user
-      
       setSubmitting(false);
     }
 

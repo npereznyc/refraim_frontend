@@ -1,27 +1,9 @@
 import React from "react"
-import { useState } from "react"
-import loadingImage from '../assets/loading.svg'
-import Button from '@mui/material/Button';
-import { TextField } from "@mui/material";
 import ConversationBox from "../components/ConversationBox";
 
 
 function RefraimSession() {
-    const [userInput, setUserInput] = useState('')
-    const [ReframeText, setRefreameText] = useState('')
-    const [loading, setLoading] = useState(false)
 
-    const handleButtonClick = () => {
-        if (userInput) {
-            setLoading(true)
-            setRefreameText('Ok, give me a moment while my digital brain digests that...')
-            // fetchBotReply(userInput)
-            // fetchSynopsis(userInput)
-        }
-    }
-    const handleInputChange = (event) => {
-        setUserInput(event.target.value)
-    }
     return (
         <section id="convo-container">
             <div className="setup-inner">

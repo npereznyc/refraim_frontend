@@ -1,9 +1,5 @@
-import { Link } from 'react-router-dom'
 import React from 'react';
 import { Button } from '@mui/material';
-import Registration from './Registration';
-
-
 
 function PrePrompt() {
     return (

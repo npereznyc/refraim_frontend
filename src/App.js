@@ -1,14 +1,9 @@
 import './App.css';
 import React from 'react';
-import Nav from './components/Nav';
 import Main from './pages/Main';
 import axios from 'axios';
 import { AuthProvider } from './auth';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useTheme } from '@mui/material/styles';
-import { Box } from '@mui/system';
-
-
 
 
 const theme = createTheme({

@@ -67,7 +67,7 @@ export const AuthProvider = ({ children}) => {
                 localStorage.setItem('refresh_token', refresh);
   
                 // Decode the access token
-                const decodedToken = jwt_decode(access);
+                // const decodedToken = jwt_decode(access);
                 navigate('/pre-prompt');
                 // const username = decodedToken.username;
                 // const userId = decodedToken.user_id;

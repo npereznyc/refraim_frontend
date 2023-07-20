@@ -9,18 +9,21 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#FFCA3B',
+      main: '#123356',
     },
     secondary: {
       main: '#4845E1',
     },
     background: {
       default: '#F3F6FF',
-    }
+    },
+    // text: {
+    //   primary: '#123356',
+    //   secondary: '#AFAFAF',
+    // }
   },
   typography: {
     fontFamily: 'Nunito, sans-serif',
-    color: '#123356',
     h1: {
       fontSize: '24px',
       fontWeight: 'bold'
@@ -34,6 +37,8 @@ const theme = createTheme({
       styleOverrides: {
         root: { // applied to the root element.
           textTransform: 'none',
+          backgroundColor: '#FFCA3B', // This will be the primary button color
+          color: '#123356', // This will be the button text color
         },
       },
     },

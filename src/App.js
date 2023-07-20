@@ -18,13 +18,16 @@ const theme = createTheme({
       default: '#F3F6FF',
     }
   },
-  text: {
-    primary: '#123356',
-    secondary: '#AFAFAF'
-  },
   typography: {
-    fontFamily: 'Nunito (20 Bold)',
-    color: '#123356'
+    fontFamily: 'Nunito, sans-serif',
+    color: '#123356',
+    h1: {
+      fontSize: '24px',
+      fontWeight: 'bold'
+    },
+    body1: {
+      fontSize: '18px',
+    }
   },
   components: {
     MuiButton: {

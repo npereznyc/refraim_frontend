@@ -20,7 +20,7 @@ function Main() {
   return (
     <div className="App">
       <header className="App-header">
-      <Typography variant="h6" >Refr<span style={{ color: theme.palette.secondary.main }}>ai</span>m</Typography>
+      <Typography variant="h1" >Refr<span style={{ color: theme.palette.secondary.main }}>ai</span>m</Typography>
  
       </header> 
       <Routes>

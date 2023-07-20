@@ -17,10 +17,6 @@ const theme = createTheme({
     background: {
       default: '#F3F6FF',
     },
-    // text: {
-    //   primary: '#123356',
-    //   secondary: '#AFAFAF',
-    // }
   },
   typography: {
     fontFamily: 'Nunito, sans-serif',

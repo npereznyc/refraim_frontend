@@ -8,36 +8,40 @@ function PrePrompt() {
             <Button
                 type="submit"
                 variant="contained"
-                color="background"
                 href="/session/"
-                style={{ marginTop: '1em' }}>
+                style={{ 
+                    backgroundColor: '#FFFFFF', color: '#123356',
+                    marginTop: '1em' }}>
                 Negative self-talk
             </Button>
             <br />
             <Button
                 type="submit"
                 variant="contained"
-                color="background"
                 href="/session/"
-                style={{ marginTop: '1em' }}>
+                style={{ 
+                    backgroundColor: '#FFFFFF', color: '#123356',
+                    marginTop: '1em' }}>
                 Relationship issue
             </Button>
             <br />
             <Button
                 type="submit"
                 variant="contained"
-                color="background"
                 href="/session/"
-                style={{ marginTop: '1em' }}>
+                style={{ 
+                    backgroundColor: '#FFFFFF', color: '#123356',
+                    marginTop: '1em' }}>
                 Work issue
             </Button>
             <br />
             <Button
                 type="submit"
                 variant="contained"
-                color="background"
                 href="/session/"
-                style={{ marginTop: '1em' }}>
+                style={{ 
+                    backgroundColor: '#FFFFFF', color: '#123356',
+                    marginTop: '1em' }}>
                 Other issue
             </Button>
         </div>

@@ -8,7 +8,7 @@ function RefraimSession() {
     return (
         <section id="convo-container">
             <div className="setup-inner">
-                <div className="speech-bubble-ai" id="speech-bubble-ai">
+                <div className="refraim-prompt" id="refraim-prompt">
                     <Typography variant='body1' id="convo-text">
                         Life can be tough. <br></br>
                         Share a negative thought you've been having and let's see if we can reframe it.

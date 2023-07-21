@@ -35,6 +35,10 @@ const theme = createTheme({
           textTransform: 'none',
           backgroundColor: '#FFCA3B', // This will be the primary button color
           color: '#123356', // This will be the button text color
+          '&:hover': {
+            backgroundColor: '#E0B034', // use a slightly darker shade of your primary button color
+          },
+   
         },
       },
     },

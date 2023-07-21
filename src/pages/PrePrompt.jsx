@@ -1,10 +1,13 @@
 import React from 'react';
 import { Button } from '@mui/material';
+import {Typography} from '@mui/material';
 
 function PrePrompt() {
     return (
         <div className="welcome">
-            <p>Whats on your mind? <br/> How can I help you think differently about this? <br/> Choose the most relevant topic below.</p>
+            <Typography variant='body1' id="convo-text">
+            Whats on your mind? <br/> How can I help you think differently about this? <br/> Choose the most relevant topic below.
+                    </Typography>
             <Button
                 type="submit"
                 variant="contained"

@@ -1,7 +1,21 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Button } from '@mui/material';
+import {useNavigate} from 'react-router-dom'
+import AuthContext from '../auth';
 
 function Disclaimer() {
+
+    let {user} = useContext(AuthContext)
+    const navigate = useNavigate()
+    const isLoggedIn = user !== null && user !== undefined;
+
+    const handleButtonClick = () => {
+        if(isLoggedIn) {
+            navigate('/session')
+        } else {
+            navigate('/welcome')
+        }
+    }
     return (
         <div className="welcome">
             <h1>Refraim is not a crisis service</h1>
@@ -19,7 +33,7 @@ function Disclaimer() {
                 type="submit"
                 variant="contained"
                 color="primary"
-                href="/welcome/"
+                onClick={handleButtonClick}
                 style={{ marginTop: '1em' }} >
                 I understand
             </Button>

@@ -73,10 +73,11 @@ function ConversationBox() {
                     <>
                         <TextField
                             id="outlined-basic"
-                            label="What are you thinking..."
+                            placeholder="(Tap here and type what you're thinking and/or feeling that is challenging you)"
                             variant="outlined"
                             value={userInput}
-                            onChange={handleInputChange} />
+                            onChange={handleInputChange} 
+                            multiline/>
                             <br/>
                             <br/>
                         <Button

@@ -41,7 +41,7 @@ function ConversationBox() {
             headers: {
                 'Content-Type': 'application/json',
                 // Include your token in the 'Authorization' header:
-                'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+                // 'Authorization': Bearer ${localStorage.getItem('access_token')}
             },
             body: JSON.stringify({ prompt: userInput })
         });

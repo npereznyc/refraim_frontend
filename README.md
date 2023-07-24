@@ -28,14 +28,14 @@ We hope you find our application useful in reframing your negative thoughts.
     <summary>Show Images</summary>
         <div>
             <h3>Getting Started<br/>
-<img width="300" alt="Screen Shot 2023-03-19 at 8 15 06 PM" src="https://i.imgur.com/sDntLBY.png">
-<img width="300" alt="Screen Shot 2023-03-19 at 8 15 13 PM" src="https://i.imgur.com/ehUkwXc.png"><br/>
+<img width="300" alt="Screen Shot 2023-03-19 at 8 15 06 PM" src="./src/assets/Refraim_Disclaimer.png">
+<img width="300" alt="Screen Shot 2023-03-19 at 8 15 13 PM" src="./src/assets/Refraim_Get Started.png"><br/>
                         <h3>Starting a Refraim Session<br/>
-<img width="300" alt="Screen Shot 2023-03-19 at 8 16 22 PM" src="https://i.imgur.com/G6A3gtj.png">
-<img width="300" alt="Screen Shot 2023-03-19 at 8 16 38 PM" src="https://i.imgur.com/eEJ0IOj.png">
+<img width="300" alt="Screen Shot 2023-03-19 at 8 16 22 PM" src="./src/assets/Refraim_Session.png">
+<img width="300" alt="Screen Shot 2023-03-19 at 8 16 38 PM" src="./src/assets/Refraim_User_Input.png">
                                     <h3>Receiving an AI Response<br/>
-<img width="300" alt="Screen Shot 2023-03-19 at 8 24 58 PM" src="https://i.imgur.com/Y0KoDbo.pngg">
-<img width="300" alt="Screen Shot 2023-03-19 at 8 25 18 PM" src="https://i.imgur.com/gdf9upw.png">
+<img width="300" alt="Screen Shot 2023-03-19 at 8 24 58 PM" src="./src/assets/Refraim_AI_thinking.png">
+<img width="300" alt="Screen Shot 2023-03-19 at 8 25 18 PM" src="./src/assets/Refraim_AI_response.png">
 
   </details>
 

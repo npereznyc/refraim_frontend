@@ -32,13 +32,13 @@ export default function Nav() {
       <BottomNavigationAction
         label="History"
         value="history"
-        href={`history/${user.user_id || user.id}/`}
+        href={`/history/${user.user_id || user.id}/`}
         icon={<RestoreIcon />}
       />
       <BottomNavigationAction
         label="Favorites"
         value="favorites"
-        href={`favorites/${user.user_id || user.id}/`}
+        href={`/favorites/${user.user_id || user.id}/`}
         icon={<FavoriteIcon />}
       />
       <BottomNavigationAction label="Folder" value="folder" icon={<FolderIcon />} />

@@ -12,6 +12,7 @@ import PrePrompt from './PrePrompt';
 import { Typography } from '@mui/material';
 import { useTheme } from '@mui/material';
 import Complete from './Complete';
+import Favorites from './Favorites';
 
 
 function Main() {
@@ -32,6 +33,7 @@ function Main() {
         <Route path='/session' element={!user ? <Navigate to="/welcome" /> : <RefraimSession />} />
         <Route path='history/:id' element={<AllConversations />}/>
         <Route path='/complete' element={<Complete />} />
+        <Route path='favorites/:id' element={<Favorites />} />
       </Routes>
     </div>
   );

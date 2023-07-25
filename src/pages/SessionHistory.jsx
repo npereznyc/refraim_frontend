@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import AuthContext from '../auth';
 import { useContext } from 'react';
-
+import Nav from "../components/Nav";
 
 // import axios from "axios"
 
@@ -53,6 +53,7 @@ function AllConversations() {
                     <hr />
                 </div>
             ))}
+            <Nav />
         </div>
     );
 }

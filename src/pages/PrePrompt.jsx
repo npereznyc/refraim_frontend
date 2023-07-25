@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '@mui/material';
 import {Typography} from '@mui/material';
+import Nav from '../components/Nav';
 
 function PrePrompt() {
     return (
@@ -47,6 +48,7 @@ function PrePrompt() {
                     marginTop: '1em' }}>
                 Other issue
             </Button>
+            <Nav />
         </div>
     );
 }

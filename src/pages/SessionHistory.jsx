@@ -32,15 +32,6 @@ function AllConversations() {
             console.error('Error:', error);
         }
     }
-    // const fetchConversations = async () => {
-    //     try {
-    //         const response = await axios.get('http://localhost:8000/allconversations/1/');
-    //         console.log(response.data)
-    //         setConversations(response.data);
-    //     } catch (error) {
-    //         console.error('Error:', error);
-    //     }
-    // }
 
     return (
         <div>

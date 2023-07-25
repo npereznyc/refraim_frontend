@@ -2,6 +2,8 @@ import React, {useContext} from 'react';
 import { Button } from '@mui/material';
 import {useNavigate} from 'react-router-dom'
 import AuthContext from '../auth';
+import {Typography} from '@mui/material';
+import Nav from '../components/Nav';
 
 function Favorites() {
 
@@ -18,20 +20,20 @@ function Favorites() {
     }
     return (
         <div className="welcome">
-            <h1>Favorites page coming soon!</h1>
-            <ul  style={{ textAlign: 'left', listStylePosition: 'inside' }}>
-                <li>We'll be adding the ability to save your favorite refraims and view them all here. Stay tuned!
-                </li>
-               
-            </ul>
+            <Typography variant="h1" color='primary' >Favorites page coming soon!</Typography>
+            <br />
+            <Typography variant='body1'>We'll be adding the ability to save your favorite refraims and view them all here. Stay tuned!.</Typography>
+            <br />
             <Button
                 type="submit"
                 variant="contained"
                 color="primary"
-                onClick={handleButtonClick}
-                style={{ marginTop: '1em' }} >
-                I understand
+                href="/pre-prompt/"
+                style={{ marginTop: '1em' }}
+                sx={{ textTransform: 'none' }} >
+                New Refraim
             </Button>
+            <Nav />
         </div>
     );
 }

@@ -16,7 +16,7 @@ function ConversationBox() {
     const [messages, setMessages] = useState([])
     const userMessages = messages.filter(message => message.sender === "user")
     let {user} = useContext(AuthContext)
-
+    console.log(user.id, user.user_id)
 
     const handleInputChange = (event) => {
         setUserInput(event.target.value)

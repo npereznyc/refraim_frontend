@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from "react"
+import AuthContext from '../auth';
+import { useContext } from 'react';
+
+
 // import axios from "axios"
+
+const API_URL = process.env.NODE_ENV === 'development' 
+  ? 'http://localhost:8000' // Your local Django server's URL
+  : 'https://refraimbackend-d7bf67f60222.herokuapp.com'; // Your deployed Django server's URL
 
 function AllConversations() {
     const [conversations, setConversations] = useState([])
+    let {user} = useContext(AuthContext)
 
     useEffect(() => {
         fetchConversations()
@@ -12,7 +21,7 @@ function AllConversations() {
         let urlParts = window.location.pathname.split('/');
         let userId = urlParts[urlParts.length - 1]; 
         try {
-            const response = await fetch(`http://localhost:8000/allconversations/${userId}/`);
+            const response = await fetch(`${API_URL}/allconversations/${user.user_id || user.id}/`);
             if (response.ok) {
                 const data = await response.json();
                 setConversations(data);
@@ -40,7 +49,7 @@ function AllConversations() {
                 <div key={conversation.id}>
                     <h3>{new Date(conversation.created_at).toLocaleString()}</h3>
                     <p>Negative Thought: {conversation.prompt}</p>
-                    <p>Refraim: {conversation.refraim}</p>
+                    <p>Positive Refraim: {conversation.refraim}</p>
                     <hr />
                 </div>
             ))}

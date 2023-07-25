@@ -8,7 +8,7 @@ function PrePrompt() {
         <div className="welcome">
             <Typography variant='body1' id="convo-text">
             Whats on your mind? <br/> How can I help you think differently about this? <br/> Choose the most relevant topic below.
-                    </Typography>
+            </Typography>
             <Button
                 type="submit"
                 variant="contained"

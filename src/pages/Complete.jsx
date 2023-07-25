@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from '@mui/material';
+import Nav from '../components/Nav';
 
 function Complete() {
     return (
@@ -15,6 +16,7 @@ function Complete() {
                 sx={{ textTransform: 'none' }} >
                 New Refraim
             </Button>
+            <Nav />
         </div>
     );
 }

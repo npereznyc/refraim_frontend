@@ -20,7 +20,6 @@ function Disclaimer() {
     return (
         <div className="welcome">
             <Typography variant="h1" color='primary' >Refraim is not a crisis service</Typography>
-            <h1>Refraim is not a crisis service</h1>
             <ul  style={{ textAlign: 'left', listStylePosition: 'inside' }}>
                 <li>No human is monitoring these conversations
                 </li>

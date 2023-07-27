@@ -35,11 +35,12 @@ function AllConversations() {
     }
 
     return (
-        <div className='history'>
+        <div className='history-section'>
             <Typography variant="h1" color='primary' >Refraim History</Typography>
             {conversations.reverse().map(conversation => (
-                <div key={conversation.id}>
-                    <h3>{new Date(conversation.created_at).toLocaleString()}</h3>
+                <div className='history' key={conversation.id}>
+                    <Typography variant='h3'>{new Date(conversation.created_at).toLocaleString()}</Typography>
+                    <br />
                     <Typography variant='body1'>Negative Thought: {conversation.prompt}</Typography>
                     <Typography variant='body1'>Positive Refraim: {conversation.refraim}</Typography>
                     <hr />

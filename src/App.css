@@ -20,6 +20,10 @@ body {
   padding-bottom: 20px;
 }
 
-.history {
+.history-section {
   padding-bottom: 30px;
+}
+
+.history {
+  padding-top: 20px
 }

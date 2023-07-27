@@ -26,6 +26,10 @@ const theme = createTheme({
     },
     body1: {
       fontSize: '18px',
+    },
+    h3: {
+      fontSize: '20px',
+      fontWeight: 'bold'
     }
   },
   components: {

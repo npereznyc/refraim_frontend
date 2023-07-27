@@ -64,7 +64,7 @@ function App() {
 
 
   return (
-    <div className="App" style={{ height: '100vh',
+    <div className="App" style={{ 
       backgroundColor: theme.palette.background.default,
       padding: theme.spacing(3) }}>
       <ThemeProvider theme={theme}>

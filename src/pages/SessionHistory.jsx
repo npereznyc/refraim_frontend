@@ -37,7 +37,7 @@ function AllConversations() {
         <div>
             
             <h1>Refraim History</h1>
-            {conversations.map(conversation => (
+            {conversations.reverse().map(conversation => (
                 <div key={conversation.id}>
                     <h3>{new Date(conversation.created_at).toLocaleString()}</h3>
                     <p>Negative Thought: {conversation.prompt}</p>

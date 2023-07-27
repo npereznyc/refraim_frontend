@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import AuthContext from '../auth';
 import { useContext } from 'react';
 import Nav from "../components/Nav";
+import { Typography } from "@mui/material";
 
 // import axios from "axios"
 
@@ -34,14 +35,13 @@ function AllConversations() {
     }
 
     return (
-        <div>
-            
-            <h1>Refraim History</h1>
+        <div className='history'>
+            <Typography variant="h1" color='primary' >Refraim History</Typography>
             {conversations.reverse().map(conversation => (
                 <div key={conversation.id}>
                     <h3>{new Date(conversation.created_at).toLocaleString()}</h3>
-                    <p>Negative Thought: {conversation.prompt}</p>
-                    <p>Positive Refraim: {conversation.refraim}</p>
+                    <Typography variant='body1'>Negative Thought: {conversation.prompt}</Typography>
+                    <Typography variant='body1'>Positive Refraim: {conversation.refraim}</Typography>
                     <hr />
                 </div>
             ))}

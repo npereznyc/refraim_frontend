@@ -45,6 +45,7 @@ function AllConversations() {
                     <hr />
                 </div>
             ))}
+            <br />
             <Nav />
         </div>
     );

@@ -42,6 +42,7 @@ function AllConversations() {
                     <Typography variant='h3'>{new Date(conversation.created_at).toLocaleString()}</Typography>
                     <br />
                     <Typography variant='body1'>Negative Thought: {conversation.prompt}</Typography>
+                    <br />
                     <Typography variant='body1'>Positive Refraim: {conversation.refraim}</Typography>
                     <hr />
                 </div>

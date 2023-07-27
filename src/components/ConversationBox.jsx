@@ -8,7 +8,7 @@ import { useContext } from 'react';
 
 const API_URL = process.env.NODE_ENV === 'development' 
   ? 'http://localhost:8000' // Your local Django server's URL
-  : 'https://refraimbackend-d7bf67f60222.herokuapp.com'; // Your deployed Django server's URL
+  : 'https://refraim-backend-e8c71717cd42.herokuapp.com'; // Your deployed Django server's URL
 
 function ConversationBox() {
     const [userInput, setUserInput] = useState('')

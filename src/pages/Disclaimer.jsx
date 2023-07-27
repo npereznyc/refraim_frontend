@@ -12,7 +12,7 @@ function Disclaimer() {
 
     const handleButtonClick = () => {
         if(isLoggedIn) {
-            navigate('/session')
+            navigate('/pre-prompt')
         } else {
             navigate('/welcome')
         }

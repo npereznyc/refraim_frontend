@@ -2,6 +2,7 @@ import React from "react"
 import ConversationBox from "../components/ConversationBox";
 import { Typography } from "@mui/material";
 import dateFormat from 'dateformat'
+import Nav from "../components/Nav";
 
 function RefraimSession() {
     const now = new Date();
@@ -16,6 +17,7 @@ function RefraimSession() {
                 </div>
             </div>
             <ConversationBox />
+            <Nav />
         </section>
     );
 }

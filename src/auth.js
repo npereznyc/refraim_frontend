@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 const API_URL = process.env.NODE_ENV === 'development' 
   ? 'http://localhost:8000' // Your local Django server's URL
-  : 'https://refraim-backend-e8c71717cd42.herokuapp.com/'; // Your deployed Django server's URL
+  : 'https://refraim-backend-e8c71717cd42.herokuapp.com'; // Your deployed Django server's URL
 
 const AuthContext = createContext()
 export default AuthContext;

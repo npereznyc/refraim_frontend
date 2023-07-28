@@ -15,6 +15,8 @@ function ConversationBox() {
     const [loading, setLoading] = useState(false)
     const [messages, setMessages] = useState([])
     const [validation, setValidation] = useState('none') //NEW CODE
+    const [conversationId, setConversationId] = useState('') //NEW CODE
+    const [conclusion, setConclusion] = useState('')
     const userMessages = messages.filter(message => message.sender === "user")
     let { user } = useContext(AuthContext)
 
@@ -50,7 +52,11 @@ function ConversationBox() {
         if (response.ok) {
             const data = await response.json();
             // Assuming the response data contains the AI's response
+            console.log(data)
             const aiResponse = data.refraim;
+            // Save the conversationId in the state or in a variable depending on your needs
+            setConversationId(data.id);  //NEW CODE
+            setConclusion(data.conclusion)
             setMessages(oldMessages => [...oldMessages, { text: aiResponse, sender: "Refraim" }]);
         } else {
             // Handle error
@@ -63,8 +69,10 @@ function ConversationBox() {
     const handleValidationResponse = async (answer) => {
         if (answer === 'yes') {
             setValidation('validated')
+            //DISPLAY CONCLUSION HERE
         } else {
             //if the answer is no, make a call to the backend to generate a new response:
+            setConclusion('resubmit')
             const lastUserMessage = userMessages[userMessages.length - 1].text;
             const lastBotMessage = messages[messages.length - 1].text;
             const newBotReply = await fetchUpdatedBotReply(lastUserMessage, lastBotMessage);
@@ -76,7 +84,7 @@ function ConversationBox() {
         setLoading(true);
     
         // Make a POST request to backend
-        const response = await fetch(`${API_URL}/allconversations/${user.user_id || user.id}/update/`, {
+        const response = await fetch(`${API_URL}/conversation/${conversationId}/`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -88,7 +96,6 @@ function ConversationBox() {
                 refraim: botResponse 
             })
         });
-    
         if (response.ok) {
             const data = await response.json();
             // Assuming the response data contains the AI's updated response

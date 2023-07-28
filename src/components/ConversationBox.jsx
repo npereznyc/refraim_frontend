@@ -80,7 +80,7 @@ function ConversationBox() {
         }
     }
 
-    async function fetchUpdatedBotReply(userInput, botResponse) {
+    async function fetchUpdatedBotReply(userInput, botResponse, conclusion, user) {
         setLoading(true);
     
         // Make a POST request to backend
@@ -93,7 +93,9 @@ function ConversationBox() {
             },
             body: JSON.stringify({ 
                 prompt: userInput,
-                refraim: botResponse 
+                refraim: botResponse,
+                conclusion: conclusion,
+                user: user.user_id || user.id
             })
         });
         if (response.ok) {

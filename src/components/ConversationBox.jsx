@@ -150,16 +150,19 @@ function ConversationBox() {
 
                         </div>
                         : validation === 'validating' ?
-                            <div>
+                            <div className='validating'>
                                 <p>Does this sound accurate?</p>
                                 <Button variant="contained"
                                     onClick={() => handleValidationResponse('yes')}>Yes</Button>
                                 <Button variant="contained"
                                     onClick={() => handleValidationResponse('no')}>No</Button>
                             </div>
-                            : validation === 'validated' ?
+                            :validation === 'validated' ? 
+                            <div className='validated'>
                                 <Button variant="contained"
                                     href='/complete'>Complete</Button>
+                            </div>
+                            
                                 : null
                 )}
 

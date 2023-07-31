@@ -80,10 +80,12 @@ function ConversationBox() {
         }
     }
 
-    async function fetchUpdatedBotReply(userInput, botResponse, conclusion, user) {
+    async function fetchUpdatedBotReply(userInput, botResponse, conclusion) {
+        console.log('conclusion: ', conclusion, 'botResponse: ', botResponse)
         setLoading(true);
-    
-        // Make a POST request to backend
+        
+        try {
+            // Make a POST request to backend
         const response = await fetch(`${API_URL}/conversation/${conversationId}/`, {
             method: 'PUT',
             headers: {
@@ -94,7 +96,7 @@ function ConversationBox() {
             body: JSON.stringify({ 
                 prompt: userInput,
                 refraim: botResponse,
-                conclusion: conclusion,
+                conclusion: 'resubmit',
                 user: user.user_id || user.id
             })
         });
@@ -107,8 +109,11 @@ function ConversationBox() {
             // Handle error
             console.error('Error:', response);
         }
-    
-        setLoading(false);
+        } catch (error) {
+            console.error('Error:', error);
+        } finally {
+            setLoading(false);
+        }
     }
 
     return (

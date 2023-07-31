@@ -30,7 +30,7 @@ function ConversationBox() {
             setMessages([...messages, { text: userInput, sender: "user" }])
             fetchBotReply(userInput)
             setUserInput('')
-            setValidation('validating')//NEW CODE
+            setValidation('none')//NEW CODE
         }
     }
 
@@ -58,6 +58,7 @@ function ConversationBox() {
             setConversationId(data.id);  //NEW CODE
             setConclusion(data.conclusion)
             setMessages(oldMessages => [...oldMessages, { text: aiResponse, sender: "Refraim" }]);
+            setValidation('validating')
         } else {
             // Handle error
             console.error('Error:', response);
@@ -65,7 +66,7 @@ function ConversationBox() {
 
         setLoading(false);
     }
-    
+
     const handleValidationResponse = async (answer) => {
         if (answer === 'yes') {
             setValidation('validated')
@@ -73,6 +74,7 @@ function ConversationBox() {
         } else {
             //if the answer is no, make a call to the backend to generate a new response:
             setConclusion('resubmit')
+            setValidation('validating')
             const lastUserMessage = userMessages[userMessages.length - 1].text;
             const lastBotMessage = messages[messages.length - 1].text;
             const newBotReply = await fetchUpdatedBotReply(lastUserMessage, lastBotMessage);
@@ -83,32 +85,32 @@ function ConversationBox() {
     async function fetchUpdatedBotReply(userInput, botResponse, conclusion) {
         console.log('conclusion: ', conclusion, 'botResponse: ', botResponse)
         setLoading(true);
-        
+
         try {
             // Make a POST request to backend
-        const response = await fetch(`${API_URL}/conversation/${conversationId}/`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                // Include your token in the 'Authorization' header:
-                // 'Authorization': Bearer ${localStorage.getItem('access_token')}
-            },
-            body: JSON.stringify({ 
-                prompt: userInput,
-                refraim: botResponse,
-                conclusion: 'resubmit',
-                user: user.user_id || user.id
-            })
-        });
-        if (response.ok) {
-            const data = await response.json();
-            // Assuming the response data contains the AI's updated response
-            const updatedAiResponse = data.refraim;
-            return updatedAiResponse;
-        } else {
-            // Handle error
-            console.error('Error:', response);
-        }
+            const response = await fetch(`${API_URL}/conversation/${conversationId}/`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // Include your token in the 'Authorization' header:
+                    // 'Authorization': Bearer ${localStorage.getItem('access_token')}
+                },
+                body: JSON.stringify({
+                    prompt: userInput,
+                    refraim: botResponse,
+                    conclusion: 'resubmit',
+                    user: user.user_id || user.id
+                })
+            });
+            if (response.ok) {
+                const data = await response.json();
+                // Assuming the response data contains the AI's updated response
+                const updatedAiResponse = data.refraim;
+                return updatedAiResponse;
+            } else {
+                // Handle error
+                console.error('Error:', response);
+            }
         } catch (error) {
             console.error('Error:', error);
         } finally {
@@ -126,6 +128,7 @@ function ConversationBox() {
                         {message.text}
                     </p>
                 ))}
+
                 {userMessages.length < 1 ? (
                     <>
                         <TextField
@@ -142,16 +145,22 @@ function ConversationBox() {
                             onClick={handleButtonClick}>Send</Button>
                     </>
                 ) : (
-                    validation === 'none' ? <p>Does this sound accurate?</p> : validation === 'validating' ?
+                    validation === 'none' ?
                         <div>
-                            <Button variant="contained"
-                                onClick={() => handleValidationResponse('yes')}>Yes</Button>
-                            <Button variant="contained"
-                                onClick={() => handleValidationResponse('no')}>No</Button>
+
                         </div>
-                        :
-                        <Button variant="contained"
-                            href='/complete'>Complete</Button>
+                        : validation === 'validating' ?
+                            <div>
+                                <p>Does this sound accurate?</p>
+                                <Button variant="contained"
+                                    onClick={() => handleValidationResponse('yes')}>Yes</Button>
+                                <Button variant="contained"
+                                    onClick={() => handleValidationResponse('no')}>No</Button>
+                            </div>
+                            : validation === 'validated' ?
+                                <Button variant="contained"
+                                    href='/complete'>Complete</Button>
+                                : null
                 )}
 
             </div>

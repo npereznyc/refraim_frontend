@@ -13,6 +13,7 @@ import { Typography } from '@mui/material';
 import { useTheme } from '@mui/material';
 import Complete from './Complete';
 import Favorites from './Favorites';
+import Settings from './Settings';
 
 
 function Main() {
@@ -34,6 +35,7 @@ function Main() {
         <Route path='history/:id' element={<AllConversations />}/>
         <Route path='/complete' element={<Complete />} />
         <Route path='favorites/:id' element={<Favorites />} />
+        <Route path='settings/:id' element={<Settings />} />
       </Routes>
     </div>
   );

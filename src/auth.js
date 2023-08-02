@@ -83,11 +83,20 @@ export const AuthProvider = ({ children}) => {
         }
     };
 
+    const logout = () => {
+      setAccessToken(null);
+      setUser(null);
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('refresh_token');
+      navigate('/welcome')
+    }
+
     const contextData = {
       user,
       setUser,
       login,
       register,
+      logout,
     }
 
     useEffect(() => {

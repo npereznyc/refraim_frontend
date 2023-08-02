@@ -52,13 +52,14 @@ function ConversationBox() {
         if (response.ok) {
             const data = await response.json();
             // Assuming the response data contains the AI's response
-            console.log(data)
+            console.log('data: ', data)
+            console.log('conclusion: ', data.conclusion)
             const aiResponse = data.refraim;
             // Save the conversationId in the state or in a variable depending on your needs
             setConversationId(data.id);  //NEW CODE
-            setConclusion(data.conclusion)
             setMessages(oldMessages => [...oldMessages, { text: aiResponse, sender: "Refraim" }]);
             setValidation('validating')
+            setConclusion(data.conclusion)
         } else {
             // Handle error
             console.error('Error:', response);
@@ -71,9 +72,8 @@ function ConversationBox() {
         if (answer === 'yes') {
             setValidation('validated')
             //DISPLAY CONCLUSION HERE
-        } else {
+        } else if (answer === 'no') {
             //if the answer is no, make a call to the backend to generate a new response:
-            setConclusion('resubmit')
             setValidation('validating')
             const lastUserMessage = userMessages[userMessages.length - 1].text;
             const lastBotMessage = messages[messages.length - 1].text;
@@ -107,6 +107,7 @@ function ConversationBox() {
                 // Assuming the response data contains the AI's updated response
                 const updatedAiResponse = data.refraim;
                 return updatedAiResponse;
+                setConclusion(conclusion)
             } else {
                 // Handle error
                 console.error('Error:', response);
@@ -123,11 +124,6 @@ function ConversationBox() {
         <section id="convo-container">
             <div className="setup-inner setup-input-container" id="setup-input-container">
                 <div id="setupInputContainer">{loading && <img src={loadingImage} className="loading" id="loading" alt='loading circles' />}</div>
-                {messages.map((message, index) => (
-                    <p key={index} className={message.sender}>
-                        {index === 0 ? message.text : `${message.sender}: ${message.text}`}
-                    </p>
-                ))}
 
                 {userMessages.length < 1 ? (
                     <>
@@ -147,9 +143,12 @@ function ConversationBox() {
                 ) : (
                     validation === 'none' ?
                         <div>
+                            Negative thought: {messages[0].text}
                         </div>
                         : validation === 'validating' ?
                             <div className='validating'>
+                                <p>Negative thought: {messages[0].text}</p>
+                                <p>Refraim: {messages[messages.length - 1].text}</p>
                                 <p>Does this sound accurate?</p>
                                 <Button variant="contained"
                                     onClick={() => handleValidationResponse('yes')}>Yes</Button>
@@ -158,10 +157,11 @@ function ConversationBox() {
                             </div>
                             : validation === 'validated' ?
                                 <div className='validated'>
+                                    <p>Negative thought: {messages[0].text}</p>
+                                    <p>Refraim: Based on our conversation, here's a new way you could look at things moving forward:</p><p>"{conclusion}"</p>
                                     <Button variant="contained"
                                         href='/complete'>Complete</Button>
                                 </div>
-
                                 : null
                 )}
 

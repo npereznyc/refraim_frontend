@@ -43,7 +43,7 @@ function AllConversations() {
                     <br />
                     <Typography variant='body1'>Negative Thought: {conversation.prompt}</Typography>
                     <br />
-                    <Typography variant='body1'>Positive Refraim: {conversation.refraim}</Typography>
+                    <Typography variant='body1'>Positive Refraim: {conversation.conclusion}</Typography>
                     <hr />
                 </div>
             ))}

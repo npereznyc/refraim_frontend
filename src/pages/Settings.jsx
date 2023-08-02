@@ -5,7 +5,10 @@ import Nav from '../components/Nav';
 
 function Settings() {
     return(
-        <p>Settings Page</p>
+        <>
+            <p>Settings Page</p>
+            <Nav/>
+        </>
     )
 }
 

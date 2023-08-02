@@ -32,10 +32,10 @@ function Main() {
         <Route path='login' element={<Login />} />
         <Route path='/pre-prompt' element={!user ? <Navigate to="/welcome" /> : <PrePrompt />} />
         <Route path='/session' element={!user ? <Navigate to="/welcome" /> : <RefraimSession />} />
-        <Route path='history/:id' element={<AllConversations />}/>
-        <Route path='/complete' element={<Complete />} />
-        <Route path='favorites/:id' element={<Favorites />} />
-        <Route path='settings/:id' element={<Settings />} />
+        <Route path='history/:id' element={!user ? <Navigate to="/welcome" /> : <AllConversations />}/>
+        <Route path='/complete' element={!user ? <Navigate to="/welcome" /> : <Complete />} />
+        <Route path='favorites/:id' element={!user ? <Navigate to="/welcome" /> : <Favorites />} />
+        <Route path='settings/:id' element={!user ? <Navigate to="/welcome" /> : <Settings />} />
       </Routes>
     </div>
   );

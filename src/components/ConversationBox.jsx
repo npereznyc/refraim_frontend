@@ -117,15 +117,16 @@ function ConversationBox() {
             setLoading(false);
         }
     }
+    console.log(messages)
 
     return (
         <section id="convo-container">
             <div className="setup-inner setup-input-container" id="setup-input-container">
-
                 <div id="setupInputContainer">{loading && <img src={loadingImage} className="loading" id="loading" alt='loading circles' />}</div>
                 {messages.map((message, index) => (
                     <p key={index} className={message.sender}>
-                        {message.text}
+                        {index === 0 ? message.text : `${message.sender}: ${message.text}`}
+
                     </p>
                 ))}
 
@@ -147,7 +148,6 @@ function ConversationBox() {
                 ) : (
                     validation === 'none' ?
                         <div>
-
                         </div>
                         : validation === 'validating' ?
                             <div className='validating'>
@@ -157,12 +157,12 @@ function ConversationBox() {
                                 <Button variant="contained"
                                     onClick={() => handleValidationResponse('no')}>No</Button>
                             </div>
-                            :validation === 'validated' ? 
-                            <div className='validated'>
-                                <Button variant="contained"
-                                    href='/complete'>Complete</Button>
-                            </div>
-                            
+                            : validation === 'validated' ?
+                                <div className='validated'>
+                                    <Button variant="contained"
+                                        href='/complete'>Complete</Button>
+                                </div>
+
                                 : null
                 )}
 

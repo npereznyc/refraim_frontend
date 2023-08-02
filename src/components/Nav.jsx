@@ -22,7 +22,7 @@ export default function Nav() {
 
   return (
     <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
-    <BottomNavigation showLabels sx={{ width: 500 }} value={value} onChange={handleChange}>
+    <BottomNavigation showLabels value={value} onChange={handleChange}>
       <BottomNavigationAction
         label="Refraim"
         value="refraim"
@@ -47,7 +47,6 @@ export default function Nav() {
         href={`/settings/${user.user_id || user.id}/`}
         icon={<SettingsIcon />}
       />
-      <BottomNavigationAction label="Folder" value="folder" icon={<FolderIcon />} />
     </BottomNavigation>
     </Paper>
   );

@@ -126,7 +126,6 @@ function ConversationBox() {
                 {messages.map((message, index) => (
                     <p key={index} className={message.sender}>
                         {index === 0 ? message.text : `${message.sender}: ${message.text}`}
-
                     </p>
                 ))}
 

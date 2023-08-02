@@ -4,6 +4,7 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import FolderIcon from '@mui/icons-material/Folder';
 import RestoreIcon from '@mui/icons-material/Restore';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import SettingsIcon from '@mui/icons-material/Settings';
 import Paper from '@mui/material/Paper';
 import ChatIcon from '@mui/icons-material/Chat';
 import AuthContext from '../auth';
@@ -39,6 +40,12 @@ export default function Nav() {
         value="favorites"
         href={`/favorites/${user.user_id || user.id}/`}
         icon={<FavoriteIcon />}
+      />
+      <BottomNavigationAction
+        label="Settings"
+        value="settings"
+        href={`/settings/${user.user_id || user.id}/`}
+        icon={<SettingsIcon />}
       />
       <BottomNavigationAction label="Folder" value="folder" icon={<FolderIcon />} />
     </BottomNavigation>

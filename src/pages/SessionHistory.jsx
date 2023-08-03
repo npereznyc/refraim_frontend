@@ -46,8 +46,8 @@ function AllConversations() {
                     <Typography variant='body1'>Negative Thought: {conversation.prompt}</Typography>
                     <br />
                     <Typography variant='body1'>Positive Refraim: {conversation.conclusion}</Typography>
-                    <hr />
-                <Like conversationId={conversation.id} initialFavorite={conversation.is_favorite}/>
+                    <Like conversationId={conversation.id} initialFavorite={conversation.is_favorite}/>
+                    <hr />                
                 </div>
             ))}
             <br />

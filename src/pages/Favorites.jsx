@@ -42,9 +42,9 @@ function Favorites() {
                     <br />
                     <Typography variant='body1'>Negative Thought: {conversation.prompt}</Typography>
                     <br />
-                    <Typography variant='body1'>Positive Refraim: {conversation.refraim}</Typography>
+                    <Typography variant='body1'>Positive Refraim: {conversation.conclusion}</Typography>
                     <Like conversationId={conversation.id} initialFavorite={conversation.is_favorite}/>
-                    <br />
+                    <hr />
                 </div>
             ))}
             <br />

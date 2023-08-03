@@ -25,6 +25,7 @@ function AllConversations() {
             const response = await fetch(`${API_URL}/allconversations/${user.user_id || user.id}/`);
             if (response.ok) {
                 const data = await response.json();
+                console.log('data: ', data)
                 setConversations(data);
             } else {
                 console.error('Error:', response);

@@ -30,7 +30,7 @@ function ConversationBox() {
             setMessages([...messages, { text: userInput, sender: "user" }])
             fetchBotReply(userInput)
             setUserInput('')
-            setValidation('none')//NEW CODE
+            setValidation('none')
         }
     }
 

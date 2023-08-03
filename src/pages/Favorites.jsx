@@ -32,7 +32,6 @@ function Favorites() {
         }
     }
 
-
     return (
         <div className='history-section'>
             <Typography variant="h1" color='primary' >Favorites</Typography>

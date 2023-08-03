@@ -3,6 +3,7 @@ import AuthContext from '../auth';
 import { useContext } from 'react';
 import Nav from "../components/Nav";
 import { Typography } from "@mui/material";
+import Like from "../components/Like";
 
 // import axios from "axios"
 
@@ -46,6 +47,7 @@ function AllConversations() {
                     <br />
                     <Typography variant='body1'>Positive Refraim: {conversation.conclusion}</Typography>
                     <hr />
+                <Like conversationId={conversation.id}/>
                 </div>
             ))}
             <br />

@@ -6,9 +6,11 @@ import { Button } from '@mui/material';
 import { Formik, Field, Form } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../auth';
+import jwt_decode from 'jwt-decode'
 
 export default function Registration() {
-  let {register} = useContext(AuthContext)
+  let { register, setUser } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   const onSubmit = async (values, { setSubmitting, resetForm }) => {
@@ -20,10 +22,13 @@ export default function Registration() {
         values.first_name,
         values.last_name
       );
-      if (response.status === 200) {
+      console.log(response.status); 
+      if (response.status === 200 || response.status === 201) {
         const { access, refresh } = response.data;
         localStorage.setItem('access_token', access);
         localStorage.setItem('refresh_token', refresh);
+        const decodedToken = jwt_decode(access); // Decode the access token
+        setUser(decodedToken); // Set the user in context
         alert('Registration successful!');
         resetForm({});
         setSubmitting(false);
@@ -82,6 +87,7 @@ export default function Registration() {
                   label="Email"
                   type="email"
                 />
+                
                 <Field
                   required
                   id="outlined-password-input"
@@ -91,6 +97,7 @@ export default function Registration() {
                   type="password"
                   autoComplete="current-password"
                 />
+                <p>* Password must be at least 9 characters, can’t be all numbers, and can't be too common (ex. password1234)</p>
                 <Field
                   id="outlined-last-name-input"
                   type="hidden"
@@ -101,6 +108,7 @@ export default function Registration() {
                   variant="contained"
                   color="primary"
                   style={{ marginTop: '1em' }}
+                  sx={{ textTransform: 'none' }}
                   disabled={isSubmitting}
                 >
                   Create Account

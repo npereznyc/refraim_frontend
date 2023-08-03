@@ -1,49 +1,54 @@
-import { Link } from 'react-router-dom'
 import React from 'react';
 import { Button } from '@mui/material';
-import Registration from './Registration';
-
-
+import {Typography} from '@mui/material';
+import Nav from '../components/Nav';
 
 function PrePrompt() {
     return (
         <div className="welcome">
-            <h1>What's on your mind?</h1>
+            <Typography variant='body1' id="convo-text">
+            Whats on your mind? <br/> How can I help you think differently about this? <br/> Choose the most relevant topic below.
+            </Typography>
             <Button
                 type="submit"
-                variant="outlined"
-                color="primary"
+                variant="contained"
                 href="/session/"
-                style={{ marginTop: '1em' }}>
+                style={{ 
+                    backgroundColor: '#FFFFFF', color: '#123356',
+                    marginTop: '1em' }}>
                 Negative self-talk
             </Button>
             <br />
             <Button
                 type="submit"
-                variant="outlined"
-                color="primary"
+                variant="contained"
                 href="/session/"
-                style={{ marginTop: '1em' }}>
+                style={{ 
+                    backgroundColor: '#FFFFFF', color: '#123356',
+                    marginTop: '1em' }}>
                 Relationship issue
             </Button>
             <br />
             <Button
                 type="submit"
-                variant="outlined"
-                color="primary"
+                variant="contained"
                 href="/session/"
-                style={{ marginTop: '1em' }}>
+                style={{ 
+                    backgroundColor: '#FFFFFF', color: '#123356',
+                    marginTop: '1em' }}>
                 Work issue
             </Button>
             <br />
             <Button
                 type="submit"
-                variant="outlined"
-                color="primary"
+                variant="contained"
                 href="/session/"
-                style={{ marginTop: '1em' }}>
+                style={{ 
+                    backgroundColor: '#FFFFFF', color: '#123356',
+                    marginTop: '1em' }}>
                 Other issue
             </Button>
+            <Nav />
         </div>
     );
 }

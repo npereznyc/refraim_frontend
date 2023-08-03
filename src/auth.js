@@ -4,6 +4,10 @@ import jwt_decode from 'jwt-decode';
 import { createContext, useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 
+const API_URL = process.env.NODE_ENV === 'development' 
+  ? 'http://localhost:8000' // Your local Django server's URL
+  : 'https://refraim-backend-e8c71717cd42.herokuapp.com'; // Your deployed Django server's URL
+
 const AuthContext = createContext()
 export default AuthContext;
 
@@ -32,7 +36,7 @@ export const AuthProvider = ({ children}) => {
   
     const register = async (username, password, email, first_name, last_name) => {
       try {
-        const response = await axios.post('http://localhost:8000/register/', {
+        const response = await axios.post(`${API_URL}/register/`, {
         username,
         password,
         email,
@@ -50,7 +54,7 @@ export const AuthProvider = ({ children}) => {
 
     const login = async (username, password) => {
         try {
-            const response = await axios.post('http://localhost:8000/token/', {
+            const response = await axios.post(`${API_URL}/token/`, {
               username,
               password,
             });
@@ -63,7 +67,7 @@ export const AuthProvider = ({ children}) => {
                 localStorage.setItem('refresh_token', refresh);
   
                 // Decode the access token
-                const decodedToken = jwt_decode(access);
+                // const decodedToken = jwt_decode(access);
                 navigate('/pre-prompt');
                 // const username = decodedToken.username;
                 // const userId = decodedToken.user_id;
@@ -79,10 +83,20 @@ export const AuthProvider = ({ children}) => {
         }
     };
 
+    const logout = () => {
+      setAccessToken(null);
+      setUser(null);
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('refresh_token');
+      navigate('/welcome')
+    }
+
     const contextData = {
       user,
+      setUser,
       login,
       register,
+      logout,
     }
 
     useEffect(() => {

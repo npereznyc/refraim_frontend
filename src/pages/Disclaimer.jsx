@@ -1,24 +1,41 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Button } from '@mui/material';
+import {useNavigate} from 'react-router-dom'
+import AuthContext from '../auth';
+import {Typography} from '@mui/material';
 
 function Disclaimer() {
+
+    let {user} = useContext(AuthContext)
+    const navigate = useNavigate()
+    const isLoggedIn = user !== null && user !== undefined;
+
+    const handleButtonClick = () => {
+        if(isLoggedIn) {
+            navigate('/pre-prompt')
+        } else {
+            navigate('/welcome')
+        }
+    }
     return (
         <div className="welcome">
-            <h1>Refraim is not a crisis service</h1>
-            <ul>
-                <li>
-                    <p>No human is monitoring these conversations</p>
+            <Typography variant="h1" color='primary' >Refraim is not a crisis service</Typography>
+            <ul  style={{ textAlign: 'left', listStylePosition: 'inside' }}>
+                <li>No human is monitoring these conversations
                 </li>
-                <li>
-                    <p>If you experience a crisis, please contact your local crisis serivces</p>
+                <br />
+                <li>This is an AI-based tool and is not a replacement for real human connection or working with a licensed therapist.
+                </li>
+                <br />
+                <li>If you experience a suicide-related crisis, please call the Suicide & Life Crisis Hotline at 988.
                 </li>
             </ul>
             <Button
                 type="submit"
-                variant="outlined"
+                variant="contained"
                 color="primary"
-                href="/welcome/"
-                style={{ marginTop: '1em' }}>
+                onClick={handleButtonClick}
+                style={{ marginTop: '1em' }} >
                 I understand
             </Button>
         </div>

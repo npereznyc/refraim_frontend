@@ -1,3 +1,6 @@
+body {
+  background-color: #F3F6FF;
+}
 .App {
   text-align: center;
 }
@@ -7,10 +10,24 @@
 }
 
 .App-header {
-  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: calc(10px + 2vmin);
-  color: rgb(50, 49, 49);
+  padding-bottom: 30px;
+}
+
+.refraim-prompt {
+  padding-bottom: 20px;
+}
+
+.history-section {
+  padding-bottom: 30px;
+}
+
+.history {
+  padding-top: 20px
+}
+
+.validating, .validated {
+  padding-bottom: 60px
 }

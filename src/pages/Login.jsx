@@ -4,18 +4,15 @@ import Box from '@mui/material/Box';
 import { TextField } from 'formik-material-ui';
 import { Button } from '@mui/material';
 import { Formik, Field, Form } from 'formik';
-import { useNavigate } from 'react-router-dom';
 import AuthContext from '../auth';
 
 export default function Login() {
   let {login} = useContext(AuthContext) 
-  const navigate = useNavigate();
 
   const onSubmit = (values, { setSubmitting }) => {
       login(values.username, values.password);
       // Here you might want to do something with the response
       // Maybe set a user state or redirect the user
-      
       setSubmitting(false);
     }
 
@@ -60,6 +57,7 @@ export default function Login() {
                   variant="contained"
                   color="primary"
                   style={{ marginTop: '1em' }}
+                  sx={{ textTransform: 'none' }}
                   disabled={isSubmitting}
                 >
                   Log in

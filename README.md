@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+# Refraim
+<h3>💫View it <a href="https://refraim.netlify.app/">Live</a></h3>
+<h2> Project Description</h2>
+Welcome to Refraim, an AI-powered mental health app that helps you to reframe your negative thoughts. Our application is built using React and Django, connects to the OpenAI API, and includes a user authentication system to ensure secure access to user accounts.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br>
+We hope you find our application useful in reframing your negative thoughts.
 
-## Available Scripts
+<h3 quote align='center'>We want to use AI for good, to help you identify negative thought patterns and move towards healthier self-awareness and self-talk. </br>
+<br>
+<br>
 
-In the project directory, you can run:
+<img width="1500" alt="Refraim: A mental health app that reframes your negative thoughts" src="https://i.imgur.com/f5LdMDA.png">
+<br></br>
+<h2>Technologies Used </h2>
+<p>
+            <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB"/>
+            <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white"/>       
+            <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/>
+            <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+            <img src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white"/>
+            <img src="https://img.shields.io/badge/Material--UI-0081CB?style=for-the-badge&logo=material-ui&logoColor=white"/>           
+            <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white"/>
+</p>
 
-### `npm start`
+<h2>Screenshots</h2>
+<details>
+    <summary>Show Images</summary>
+        <div>
+            <h3>Getting Started<br/>
+<img width="300" alt="Screen Shot 2023-03-19 at 8 15 06 PM" src="./src/assets/Refraim_Disclaimer.png">
+<img width="300" alt="Screen Shot 2023-03-19 at 8 15 13 PM" src="./src/assets/Refraim_Get Started.png"><br/>
+                        <h3>Starting a Refraim Session<br/>
+<img width="300" alt="Screen Shot 2023-03-19 at 8 16 22 PM" src="./src/assets/Refraim_Session.png">
+<img width="300" alt="Screen Shot 2023-03-19 at 8 16 38 PM" src="./src/assets/Refraim_User_Input.png">
+                                    <h3>Receiving an AI Response<br/>
+<img width="300" alt="Screen Shot 2023-03-19 at 8 24 58 PM" src="./src/assets/Refraim_AI_thinking.png">
+<img width="300" alt="Screen Shot 2023-03-19 at 8 25 18 PM" src="./src/assets/Refraim_AI_response.png">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  </details>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+<h2> <a href="https://www.figma.com/file/KtIfB6WF0m3YrHgaANraHA/Refraim-%2F-research%2F?type=design&node-id=38-475&mode=design">View Wireframes</a></h3>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation Steps: 
+<ol>
+<li>Fork and clone this repository.
 
-### `npm run build`
+</li>
+<li>In your terminal, 
+</li>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+$ cd refraim_frontend
+$ npm install (to install client-side dependencies)
+$ npm start (to start the client)
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<li>
+In a new terminal, 
+</li>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+$ cd refraim-backend
+$ python3 -m venv env (to start virtual environment)
+$ source env/bin/activate (to activate virtual environment on MacOS or Unix)
+-OR-
+$.\env\Scripts\activate (to activate virtual environmnt on Windows)
+$ pip install -r requirements.txt (to install dependencies)
+$ python3 manage.py makemigrations
+$ python3 manage.py migrate
+$ python3 manage.py runserver (to run the server)
+```
+* Don't forget to set up your environmental variables and your database.
 
-### `npm run eject`
+</ol>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 👋 Meet the Team
+### Software Developers📱
+→ <a href="https://github.com/npereznyc">Natalie Perez</a><br>
+→ <a href="https://github.com/Jordan-Burgess">Jordan Burgess</a><br>
+→ <a href="https://github.com/rmzimmerman98">Randall Zimmerman</a><br>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### UI/UX Designers🎨
+→ <a href="https://www.linkedin.com/in/ferniesaldivar/">Fernie Saldivar</a><br>
+→ <a href="https://www.linkedin.com/in/christian-chamberlin/">Christian Chamberlin</a><br>
+→ <a href="https://www.linkedin.com/in/sohaya/">Sohayainder Kaur</a>
+            
+## Future Features Roadmap 
+- [ ] Refraim history page
+- [ ] Favorite refraims page
+- [ ] Logout
+- [ ] Streak feature
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<h3>🔗 <a href="https://github.com/rmzimmerman98/refraim-backend">Link</a> to BackEnd Repository</h3>

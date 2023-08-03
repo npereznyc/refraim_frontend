@@ -3,6 +3,7 @@ import AuthContext from '../auth';
 import { useContext } from 'react';
 import Nav from "../components/Nav";
 import { Typography } from "@mui/material";
+import Like from "../components/Like";
 
 // import axios from "axios"
 
@@ -25,6 +26,7 @@ function AllConversations() {
             const response = await fetch(`${API_URL}/allconversations/${user.user_id || user.id}/`);
             if (response.ok) {
                 const data = await response.json();
+                console.log('data: ', data)
                 setConversations(data);
             } else {
                 console.error('Error:', response);
@@ -44,7 +46,8 @@ function AllConversations() {
                     <Typography variant='body1'>Negative Thought: {conversation.prompt}</Typography>
                     <br />
                     <Typography variant='body1'>Positive Refraim: {conversation.conclusion}</Typography>
-                    <hr />
+                    <Like conversationId={conversation.id} initialFavorite={conversation.is_favorite}/>
+                    <hr />                
                 </div>
             ))}
             <br />

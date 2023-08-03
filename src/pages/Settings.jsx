@@ -8,7 +8,8 @@ function Settings() {
     let {logout} = useContext(AuthContext)
     return(
         <>
-            <p>Settings Page</p>
+            <Typography variant="h1" color='primary'>Settings</Typography>
+            <br />
             <Button
                 variant="contained"
                 onClick={logout}>Logout</Button>

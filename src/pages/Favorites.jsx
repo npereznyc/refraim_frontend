@@ -2,6 +2,7 @@ import React, {useContext, useState, useEffect} from 'react';
 import AuthContext from '../auth';
 import {Typography} from '@mui/material';
 import Nav from '../components/Nav';
+import Like from '../components/Like';
 
 const API_URL = process.env.NODE_ENV === 'development' 
   ? 'http://localhost:8000' // Your local Django server's URL
@@ -32,7 +33,6 @@ function Favorites() {
         }
     }
 
-
     return (
         <div className='history-section'>
             <Typography variant="h1" color='primary' >Favorites</Typography>
@@ -42,7 +42,8 @@ function Favorites() {
                     <br />
                     <Typography variant='body1'>Negative Thought: {conversation.prompt}</Typography>
                     <br />
-                    <Typography variant='body1'>Positive Refraim: {conversation.refraim}</Typography>
+                    <Typography variant='body1'>Positive Refraim: {conversation.conclusion}</Typography>
+                    <Like conversationId={conversation.id} initialFavorite={conversation.is_favorite}/>
                     <hr />
                 </div>
             ))}

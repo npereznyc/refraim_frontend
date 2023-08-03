@@ -30,7 +30,7 @@ function ConversationBox() {
             setMessages([...messages, { text: userInput, sender: "user" }])
             fetchBotReply(userInput)
             setUserInput('')
-            setValidation('none')//NEW CODE
+            setValidation('none')
         }
     }
 
@@ -51,12 +51,9 @@ function ConversationBox() {
 
         if (response.ok) {
             const data = await response.json();
-            // Assuming the response data contains the AI's response
-            console.log('data: ', data)
-            console.log('conclusion: ', data.conclusion)
             const aiResponse = data.refraim;
             // Save the conversationId in the state or in a variable depending on your needs
-            setConversationId(data.id);  //NEW CODE
+            setConversationId(data.id);
             setMessages(oldMessages => [...oldMessages, { text: aiResponse, sender: "Refraim" }]);
             setValidation('validating')
             setConclusion(data.conclusion)
@@ -71,7 +68,6 @@ function ConversationBox() {
     const handleValidationResponse = async (answer) => {
         if (answer === 'yes') {
             setValidation('validated')
-            //DISPLAY CONCLUSION HERE
         } else if (answer === 'no') {
             //if the answer is no, make a call to the backend to generate a new response:
             setValidation('validating')
@@ -107,7 +103,6 @@ function ConversationBox() {
                 // Assuming the response data contains the AI's updated response
                 const updatedAiResponse = data.refraim;
                 return updatedAiResponse;
-                setConclusion(conclusion)
             } else {
                 // Handle error
                 console.error('Error:', response);
@@ -118,13 +113,11 @@ function ConversationBox() {
             setLoading(false);
         }
     }
-    console.log(messages)
 
     return (
         <section id="convo-container">
             <div className="setup-inner setup-input-container" id="setup-input-container">
                 <div id="setupInputContainer">{loading && <img src={loadingImage} className="loading" id="loading" alt='loading circles' />}</div>
-
                 {userMessages.length < 1 ? (
                     <>
                         <TextField

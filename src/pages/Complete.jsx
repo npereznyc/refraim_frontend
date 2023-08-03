@@ -1,11 +1,12 @@
 import React from 'react';
 import { Button } from '@mui/material';
 import Nav from '../components/Nav';
+import {Typography} from '@mui/material';
 
 function Complete() {
     return (
         <div className="welcome">
-            <h1>Refraim complete!</h1>
+            <Typography variant="h1" color='primary'>Refraim complete!</Typography>
             
             <Button
                 type="submit"

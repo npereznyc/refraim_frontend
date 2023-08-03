@@ -47,7 +47,7 @@ function AllConversations() {
                     <br />
                     <Typography variant='body1'>Positive Refraim: {conversation.conclusion}</Typography>
                     <hr />
-                <Like conversationId={conversation.id}/>
+                <Like conversationId={conversation.id} initialFavorite={conversation.is_favorite}/>
                 </div>
             ))}
             <br />

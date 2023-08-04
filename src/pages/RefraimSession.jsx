@@ -11,17 +11,14 @@ function RefraimSession() {
         <section id="convo-container">
             <div>
                 <Typography className='date' variant='body1'>
-                        {dateFormat(now, "mmmm dS")}
-                    </Typography>
-                    <br />
+                    {dateFormat(now, "mmmm dS")}
+                </Typography>
+                <br />
                 <div className="refraim-prompt" id="refraim-prompt">
                     
-                    <img className='brain-icon' src={Brain_Chat} />
-             
-                    <Typography variant='body1' id="convo-text">
-                        Life can be tough. What negative thoughts are you having?
+                    <Typography variant='body1' className="convo-text">
+                        <img className='brain-icon' src={Brain_Chat} alt='Image of a brain with arms and legs cheering' />Life can be tough. What negative thoughts are you having?
                     </Typography>
-                    
                 </div>
             </div>
             <ConversationBox />

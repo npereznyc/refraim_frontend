@@ -18,10 +18,15 @@ body {
 
 .refraim-prompt {
   padding-bottom: 20px;
+  text-align: left;
 }
 
-.convo-text, .refraim-prompt {
+.convo-text {
   text-align: left;
+}
+.convo-text1 {
+  text-align: left;
+  padding-top: 10px;
 }
 
 .history-section {
@@ -44,4 +49,19 @@ text-align: right;
   height: 40px;
   width: 40px;
   float: right;
+}
+
+.brain-icon-left {
+  height: 40px;
+  width: 40px;
+  float: left;
+}
+
+.icon-dash {
+  display: flex;
+  align-items: center;
+}
+
+.dash {
+  width: 80%
 }

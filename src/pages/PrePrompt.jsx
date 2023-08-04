@@ -15,7 +15,7 @@ function PrePrompt() {
                 href="/session/"
                 style={{ 
                     backgroundColor: '#FFFFFF', color: '#123356',
-                    marginTop: '1em' }}>
+                    marginTop: '1em', width: 200}}>
                 Negative self-talk
             </Button>
             <br />
@@ -25,7 +25,7 @@ function PrePrompt() {
                 href="/session/"
                 style={{ 
                     backgroundColor: '#FFFFFF', color: '#123356',
-                    marginTop: '1em' }}>
+                    marginTop: '1em', width: 200 }}>
                 Relationship issue
             </Button>
             <br />
@@ -35,7 +35,7 @@ function PrePrompt() {
                 href="/session/"
                 style={{ 
                     backgroundColor: '#FFFFFF', color: '#123356',
-                    marginTop: '1em' }}>
+                    marginTop: '1em', width: 200 }}>
                 Work issue
             </Button>
             <br />
@@ -45,7 +45,7 @@ function PrePrompt() {
                 href="/session/"
                 style={{ 
                     backgroundColor: '#FFFFFF', color: '#123356',
-                    marginTop: '1em' }}>
+                    marginTop: '1em', width: 200 }}>
                 Other issue
             </Button>
             <Nav />

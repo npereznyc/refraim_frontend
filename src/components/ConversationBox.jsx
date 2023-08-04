@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import { TextField } from "@mui/material";
 import AuthContext from '../auth';
 import { useContext } from 'react';
+import Like from "./Like";
 
 const API_URL = process.env.NODE_ENV === 'development'
     ? 'http://localhost:8000' // Your local Django server's URL
@@ -152,6 +153,7 @@ function ConversationBox() {
                                 <div className='validated'>
                                     <p>Negative thought: {messages[0].text}</p>
                                     <p>Refraim: Based on our conversation, here's a new way you could look at things moving forward:</p><p>"{conclusion}"</p>
+                                    <Like conversationId={conversationId} initialFavorite={false}/>
                                     <Button variant="contained"
                                         href='/complete'>Complete</Button>
                                 </div>

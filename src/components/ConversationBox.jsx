@@ -7,6 +7,7 @@ import AuthContext from '../auth';
 import { useContext } from 'react';
 import Like from "./Like";
 import Brain_Notes from '../assets/Brain_Notes.png'
+import Brain_Bulb from '../assets/Brain_Bulb.png'
 import { Typography } from "@mui/material";
 
 const API_URL = process.env.NODE_ENV === 'development'
@@ -146,35 +147,66 @@ function ConversationBox() {
                                 <Typography variant='body2'>
                                     Negative thought: {messages[0].text}
                                 </Typography>
+
                                 <div className='icon-dash'>
-                                    <img className='brain-icon-left' src={Brain_Notes} alt='Image of a brain with arms and legs taking notes' />
-                                    <hr className='dash'/>
+                                    <img className='brain-icon-left' src={Brain_Notes} alt='Brain with arms and legs taking notes' />
+                                    <hr className='dash' />
                                 </div>
-
-
-
 
                                 <Typography variant='body2' className="convo-text1">
                                     Refraim: {messages[messages.length - 1].text}
                                 </Typography>
+
                                 <br />
+
                                 <Typography variant='body2'>
                                     Does this sound accurate?
                                 </Typography>
+
                                 <br />
-                                <Button variant="contained"
-                                    onClick={() => handleValidationResponse('yes')}>Yes</Button>
-                                <Button variant="contained"
-                                    onClick={() => handleValidationResponse('no')}>No</Button>
+                                <div className='validation-buttons'>
+                                    <Button variant="contained"
+                                        onClick={() => handleValidationResponse('yes')}>Yes</Button>
+                
+                                    <Button variant="contained"
+                                        onClick={() => handleValidationResponse('no')}>No</Button>
+                                </div>
+
+
                             </div>
                             : validation === 'validated' ?
                                 <div className='validated'>
-                                    <p>Negative thought: {messages[0].text}</p>
-                                    <p>Refraim: {messages[messages.length - 1].text}"</p>
-                                    <p>Refraim: Based on our conversation, here's a new way you could look at things moving forward:</p><p>"{conclusion}"</p>
+                                    <Typography variant='body2'>
+                                        Negative thought: {messages[0].text}
+                                    </Typography>
+
+                                    <div className='icon-dash'>
+                                        <img className='brain-icon-left' src={Brain_Notes} alt='Brain with arms and legs taking notes' />
+                                        <hr className='dash' />
+                                    </div>
+
+                                    <Typography variant='body2' className="convo-text1">
+                                        Refraim: {messages[messages.length - 1].text}
+                                    </Typography>
+
+                                    <div className='icon-dash'>
+                                        <hr className='dash' />
+                                        <img className='brain-icon-right' src={Brain_Bulb} alt='Brain with arms and legs taking notes' />
+
+                                    </div>
+
+                                    <Typography variant='body2' className="convo-text1">
+                                        Refraim: Based on our conversation, here's a new way you could look at things moving forward:
+                                    </Typography>
+
+                                    <Typography variant='body2' className="convo-text1">
+                                        "{conclusion}"
+                                    </Typography>
+
+
                                     <Like className='like-button' conversationId={conversationId} initialFavorite={false} />
                                     <br />
-                                    <Button variant="contained"
+                                    <Button className='complete-button' variant="contained"
                                         href='/complete'>Complete</Button>
                                 </div>
                                 : null

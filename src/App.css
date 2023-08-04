@@ -7,6 +7,7 @@ body {
 
 .App-main {
   padding: 20px;
+  padding-bottom: 50px;
 }
 
 .App-header {
@@ -23,6 +24,7 @@ body {
 
 .convo-text {
   text-align: left;
+  
 }
 .convo-text1 {
   text-align: left;
@@ -57,11 +59,28 @@ text-align: right;
   float: left;
 }
 
+.brain-icon-right {
+  height: 40px;
+  width: 40px;
+  float: right;
+}
+
 .icon-dash {
   display: flex;
   align-items: center;
+  padding-top: 10px;
 }
 
 .dash {
   width: 80%
+}
+
+.complete-button {
+  margin-bottom: 100px;
+}
+
+.validation-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
 }

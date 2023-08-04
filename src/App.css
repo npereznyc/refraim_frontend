@@ -20,7 +20,7 @@ body {
   padding-bottom: 20px;
 }
 
-.convo-text {
+.convo-text, .refraim-prompt {
   text-align: left;
 }
 
@@ -38,4 +38,10 @@ body {
 
 .like-button {
 text-align: right;
+}
+
+.brain-icon {
+  height: 40px;
+  width: 40px;
+  float: right;
 }

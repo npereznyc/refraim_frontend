@@ -152,8 +152,9 @@ function ConversationBox() {
                             : validation === 'validated' ?
                                 <div className='validated'>
                                     <p>Negative thought: {messages[0].text}</p>
+                                    <p>Refraim: {messages[messages.length-1].text}"</p>
                                     <p>Refraim: Based on our conversation, here's a new way you could look at things moving forward:</p><p>"{conclusion}"</p>
-                                    <Like conversationId={conversationId} initialFavorite={false}/>
+                                    <Like className='like'conversationId={conversationId} initialFavorite={false}/>
                                     <br/>
                                     <Button variant="contained"
                                         href='/complete'>Complete</Button>

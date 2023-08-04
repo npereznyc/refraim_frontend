@@ -40,10 +40,10 @@ function Favorites() {
                 <div className='history' key={conversation.id}>
                     <Typography variant='h3'>{new Date(conversation.created_at).toLocaleString()}</Typography>
                     <br />
-                    <Typography variant='body1'>Negative Thought: {conversation.prompt}</Typography>
+                    <Typography className='convo-text' variant='body1'>Negative Thought: {conversation.prompt}</Typography>
                     <br />
-                    <Typography variant='body1'>Positive Refraim: {conversation.conclusion}</Typography>
-                    <Like conversationId={conversation.id} initialFavorite={conversation.is_favorite}/>
+                    <Typography className='convo-text' variant='body1'>Positive Refraim: {conversation.conclusion} </Typography>
+                    <Like className='like-button' conversationId={conversation.id} initialFavorite={conversation.is_favorite}/>
                     <hr />
                 </div>
             ))}

@@ -10,7 +10,10 @@ function RefraimSession() {
         <section id="convo-container">
             <div className="setup-inner">
                 <div className="refraim-prompt" id="refraim-prompt">
-                    <p>{dateFormat(now, "mmmm dS")}</p>
+                    <Typography className='date' variant='body1' id="convo-text">
+                        {dateFormat(now, "mmmm dS")}
+                    </Typography>
+                    <br />
                     <Typography variant='body1' id="convo-text">
                         Life can be tough. What negative thoughts are you having?
                     </Typography>

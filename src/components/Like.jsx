@@ -2,6 +2,7 @@ import React from "react"
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { useState, useEffect } from "react";
+import { Stack } from "@mui/material";
 
 function Like({conversationId, initialFavorite}) {
 
@@ -42,11 +43,12 @@ function Like({conversationId, initialFavorite}) {
     }
     
     return(
-        <>
-        {isFavorite ?
+        <Stack direction='row' justifyContent='end'>
+            <> {isFavorite ?
         <FavoriteIcon onClick={handleClick}/> :
         <FavoriteBorderIcon onClick={handleClick}/>}
-        </>
+        </>        
+        </Stack>
     )
 }
 

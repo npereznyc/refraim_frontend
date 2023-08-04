@@ -20,6 +20,10 @@ body {
   padding-bottom: 20px;
 }
 
+.convo-text {
+  text-align: left;
+}
+
 .history-section {
   padding-bottom: 30px;
 }
@@ -30,4 +34,8 @@ body {
 
 .validating, .validated {
   padding-bottom: 60px
+}
+
+.like-button {
+text-align: right;
 }

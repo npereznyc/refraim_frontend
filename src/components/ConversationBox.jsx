@@ -117,8 +117,8 @@ function ConversationBox() {
 
     return (
         <section id="convo-container">
-            <div className="setup-inner setup-input-container" id="setup-input-container">
-                <div id="setupInputContainer">{loading && <img src={loadingImage} className="loading" id="loading" alt='loading circles' />}</div>
+            <div className="input-container" id="input-container">
+                <div id="loading">{loading && <img src={loadingImage} className="loading" id="loading" alt='loading circles' />}</div>
                 {userMessages.length < 1 ? (
                     <>
                         <TextField
@@ -154,7 +154,7 @@ function ConversationBox() {
                                     <p>Negative thought: {messages[0].text}</p>
                                     <p>Refraim: {messages[messages.length-1].text}"</p>
                                     <p>Refraim: Based on our conversation, here's a new way you could look at things moving forward:</p><p>"{conclusion}"</p>
-                                    <Like className='like'conversationId={conversationId} initialFavorite={false}/>
+                                    <Like className='like-button'conversationId={conversationId} initialFavorite={false}/>
                                     <br/>
                                     <Button variant="contained"
                                         href='/complete'>Complete</Button>

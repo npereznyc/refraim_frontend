@@ -154,6 +154,7 @@ function ConversationBox() {
                                     <p>Negative thought: {messages[0].text}</p>
                                     <p>Refraim: Based on our conversation, here's a new way you could look at things moving forward:</p><p>"{conclusion}"</p>
                                     <Like conversationId={conversationId} initialFavorite={false}/>
+                                    <br/>
                                     <Button variant="contained"
                                         href='/complete'>Complete</Button>
                                 </div>

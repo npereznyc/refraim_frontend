@@ -4,6 +4,8 @@ import { useContext } from 'react';
 import Nav from "../components/Nav";
 import { Typography } from "@mui/material";
 import Like from "../components/Like";
+import {useNavigate} from 'react-router-dom'
+import { Button } from "@mui/material";
 
 // import axios from "axios"
 
@@ -14,6 +16,8 @@ const API_URL = process.env.NODE_ENV === 'development'
 function AllConversations() {
     const [conversations, setConversations] = useState([])
     let {user} = useContext(AuthContext)
+    const navigate = useNavigate()
+    const isLoggedIn = user !== null && user !== undefined;
 
     useEffect(() => {
         fetchConversations()
@@ -36,10 +40,38 @@ function AllConversations() {
         }
     }
 
+    const handleButtonClick = () => {
+        if(isLoggedIn) {
+            navigate('/pre-prompt')
+        } else {
+            navigate('/welcome')
+        }
+    }
+
     return (
         <div className='history-section'>
             <Typography variant="h1" color='primary' >Refraim History</Typography>
-            {conversations.reverse().map(conversation => (
+            <br />
+            {conversations.length < 1 ? (
+                <>
+                <Typography variant='body1' id="convo-text">
+                    Complete your first Refraim Session to see your refraim history here <br />
+                </Typography>
+                <br />
+                <Typography variant='body1' id="convo-text">
+                Start a new Refraim Session: <br />
+            </Typography>
+            <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                onClick={handleButtonClick}
+                style={{ marginTop: '1em' }} >
+                Begin
+            </Button>
+            </>
+            ) :
+            conversations.reverse().map(conversation => (
                 <div className='history' key={conversation.id}>
                     <Typography variant='h3'>{new Date(conversation.created_at).toLocaleString()}</Typography>
                     <br />

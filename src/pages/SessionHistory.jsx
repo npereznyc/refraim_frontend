@@ -4,7 +4,6 @@ import { useContext } from 'react';
 import Nav from "../components/Nav";
 import { Typography } from "@mui/material";
 import Like from "../components/Like";
-import {useNavigate} from 'react-router-dom'
 import { Button } from "@mui/material";
 
 // import axios from "axios"
@@ -16,8 +15,6 @@ const API_URL = process.env.NODE_ENV === 'development'
 function AllConversations() {
     const [conversations, setConversations] = useState([])
     let {user} = useContext(AuthContext)
-    const navigate = useNavigate()
-    const isLoggedIn = user !== null && user !== undefined;
 
     useEffect(() => {
         fetchConversations()
@@ -40,14 +37,6 @@ function AllConversations() {
         }
     }
 
-    const handleButtonClick = () => {
-        if(isLoggedIn) {
-            navigate('/pre-prompt')
-        } else {
-            navigate('/welcome')
-        }
-    }
-
     return (
         <div className='history-section'>
             <Typography variant="h1" color='primary' >Refraim History</Typography>
@@ -65,7 +54,7 @@ function AllConversations() {
                 type="submit"
                 variant="contained"
                 color="primary"
-                onClick={handleButtonClick}
+                href='/pre-prompt'
                 style={{ marginTop: '1em' }} >
                 Begin
             </Button>

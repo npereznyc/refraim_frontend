@@ -4,7 +4,6 @@ import { Typography } from '@mui/material';
 import Nav from '../components/Nav';
 import Like from '../components/Like';
 import { Button } from '@mui/material';
-import {useNavigate} from 'react-router-dom'
 
 const API_URL = process.env.NODE_ENV === 'development'
     ? 'http://localhost:8000' // Your local Django server's URL
@@ -14,8 +13,7 @@ function Favorites() {
 
     const [conversations, setConversations] = useState([])
     let { user } = useContext(AuthContext)
-    const navigate = useNavigate()
-    const isLoggedIn = user !== null && user !== undefined;
+
     
 
     useEffect(() => {
@@ -38,14 +36,6 @@ function Favorites() {
         }
     }
 
-    const handleButtonClick = () => {
-        if(isLoggedIn) {
-            navigate('/pre-prompt')
-        } else {
-            navigate('/welcome')
-        }
-    }
-
     return (
         <div className='history-section'>
             <Typography variant="h1" color='primary' >Favorites</Typography>
@@ -63,7 +53,7 @@ function Favorites() {
                 type="submit"
                 variant="contained"
                 color="primary"
-                onClick={handleButtonClick}
+                href='/pre-prompt'
                 style={{ marginTop: '1em' }} >
                 Begin
             </Button>

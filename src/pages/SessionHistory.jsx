@@ -6,8 +6,6 @@ import { Typography } from "@mui/material";
 import Like from "../components/Like";
 import { Button } from "@mui/material";
 
-// import axios from "axios"
-
 const API_URL = process.env.NODE_ENV === 'development' 
   ? 'http://localhost:8000' // Your local Django server's URL
   : 'https://refraim-backend-e8c71717cd42.herokuapp.com'; // Your deployed Django server's URL
@@ -21,8 +19,6 @@ function AllConversations() {
     }, [])
 
     const fetchConversations = async () => {
-        // let urlParts = window.location.pathname.split('/');
-        // let userId = urlParts[urlParts.length - 1]; 
         try {
             const response = await fetch(`${API_URL}/allconversations/${user.user_id || user.id}/`);
             if (response.ok) {

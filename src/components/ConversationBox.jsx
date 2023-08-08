@@ -140,7 +140,9 @@ function ConversationBox() {
                 ) : (
                     validation === 'none' ?
                         <div>
-                            Negative thought: {messages[0].text}
+                            <Typography variant='body2'>
+                                Negative thought: {messages[0].text}
+                            </Typography>
                         </div>
                         : validation === 'validating' ?
                             <div className='validating'>
@@ -167,7 +169,7 @@ function ConversationBox() {
                                 <div className='validation-buttons'>
                                     <Button variant="contained"
                                         onClick={() => handleValidationResponse('yes')}>Yes</Button>
-                
+
                                     <Button variant="contained"
                                         onClick={() => handleValidationResponse('no')}>No</Button>
                                 </div>

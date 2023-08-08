@@ -45,7 +45,6 @@ const theme = createTheme({
           '&:hover': {
             backgroundColor: '#E0B034', // use a slightly darker shade of your primary button color
           },
-   
         },
       },
     },
@@ -58,12 +57,10 @@ function App() {
   axios.interceptors.request.use((config) => {
     // Get the token from local storage
     const token = localStorage.getItem('access_token');
-
     // If the token exists, attach it to the Authorization header
     if (token) {
       config.headers['Authorization'] = 'Bearer ' + token;
     }
-
     // Set the content type to JSON
     config.headers['Content-Type'] = 'application/json';
     return config;

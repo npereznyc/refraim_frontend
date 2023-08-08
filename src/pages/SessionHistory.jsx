@@ -62,7 +62,7 @@ function AllConversations() {
             ) :
             conversations.reverse().map(conversation => (
                 <div className='history' key={conversation.id}>
-                    <Typography variant='h3'>{new Date(conversation.created_at).toLocaleString()}</Typography>
+                    <Typography variant='h3' className='convo-text' >{new Date(conversation.created_at).toLocaleString()}</Typography>
                     <br />
                     <Typography className='convo-text' variant='body1'>Negative Thought: {conversation.prompt}</Typography>
                     <br />

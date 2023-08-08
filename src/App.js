@@ -30,7 +30,7 @@ const theme = createTheme({
     body2: {
       fontSize: '16px',
     },
-    h3: {
+    h2: {
       fontSize: '20px',
       fontWeight: 'bold'
     }

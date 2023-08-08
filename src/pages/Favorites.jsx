@@ -13,8 +13,8 @@ function Favorites() {
 
     const [conversations, setConversations] = useState([])
     let { user } = useContext(AuthContext)
+    const [loading, setLoading] = useState(true);
 
-    
 
     useEffect(() => {
         fetchFavorites()
@@ -34,42 +34,48 @@ function Favorites() {
         } catch (error) {
             console.error('Error:', error);
         }
+        setLoading(false)
     }
 
     return (
         <div className='history-section'>
             <Typography variant="h1" color='primary' >Favorites</Typography>
             <br />
-            {conversations.length < 1 ? (
-                <>
-                <Typography variant='body1' id="convo-text">
-                    You haven't saved any Refraims to your favorites yet! <br />
+            {loading ? (
+                <Typography variant='h2' id="convo-text">
+                    Your Favorite Refraims are loading...
                 </Typography>
-                <br />
-                <Typography variant='body1' id="convo-text">
-                Start a new Refraim Session: <br />
-            </Typography>
-            <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                href='/pre-prompt'
-                style={{ marginTop: '1em' }} >
-                Begin
-            </Button>
-            </>
-                
-            ) : conversations.reverse().map(conversation => (
-                <div className='history' key={conversation.id}>
-                    <Typography variant='h3' className='convo-text'>{new Date(conversation.created_at).toLocaleString()}</Typography>
-                    <br />
-                    <Typography className='convo-text' variant='body1'>Negative Thought: {conversation.prompt}</Typography>
-                    <br />
-                    <Typography className='convo-text' variant='body1'>Positive Refraim: {conversation.conclusion} </Typography>
-                    <Like className='like-button' conversationId={conversation.id} initialFavorite={conversation.is_favorite} />
-                    <hr />
-                </div>
-            ))
+            ) :
+                conversations.length < 1 ? (
+                    <>
+                        <Typography variant='body1' id="convo-text">
+                            You haven't saved any Refraims to your favorites yet! <br />
+                        </Typography>
+                        <br />
+                        <Typography variant='body1' id="convo-text">
+                            Start a new Refraim Session: <br />
+                        </Typography>
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            href='/pre-prompt'
+                            style={{ marginTop: '1em' }} >
+                            Begin
+                        </Button>
+                    </>
+
+                ) : conversations.reverse().map(conversation => (
+                    <div className='history' key={conversation.id}>
+                        <Typography variant='h2' className='convo-text'>{new Date(conversation.created_at).toLocaleString()}</Typography>
+                        <br />
+                        <Typography className='convo-text' variant='body1'>Negative Thought: {conversation.prompt}</Typography>
+                        <br />
+                        <Typography className='convo-text' variant='body1'>Positive Refraim: {conversation.conclusion} </Typography>
+                        <Like className='like-button' conversationId={conversation.id} initialFavorite={conversation.is_favorite} />
+                        <hr />
+                    </div>
+                ))
             }
 
             <br />

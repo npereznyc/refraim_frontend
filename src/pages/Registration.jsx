@@ -7,6 +7,7 @@ import { Formik, Field, Form } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../auth';
 import jwt_decode from 'jwt-decode'
+import {Typography} from '@mui/material';
 
 export default function Registration() {
   let { register, setUser } = useContext(AuthContext);
@@ -45,7 +46,8 @@ export default function Registration() {
 
   return (
     <>
-      <h1>Let's get you started</h1>
+      <Typography variant="h1" color='primary'>Let's get you started</Typography>
+      
       <Formik
         initialValues={{
           username: '',

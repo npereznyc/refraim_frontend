@@ -5,6 +5,7 @@ import { TextField } from 'formik-material-ui';
 import { Button } from '@mui/material';
 import { Formik, Field, Form } from 'formik';
 import AuthContext from '../auth';
+import {Typography} from '@mui/material';
 
 export default function Login() {
   let {login} = useContext(AuthContext) 
@@ -18,7 +19,7 @@ export default function Login() {
 
   return (
     <>
-      <h1>Log In to Your Account</h1>
+      <Typography variant="h1" color='primary' >Log In to Your Account</Typography>
       <Formik
         initialValues={{
           username: '',

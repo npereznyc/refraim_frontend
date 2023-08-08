@@ -6,13 +6,13 @@ import { Typography } from "@mui/material";
 import Like from "../components/Like";
 import { Button } from "@mui/material";
 
-const API_URL = process.env.NODE_ENV === 'development' 
-  ? 'http://localhost:8000' // Your local Django server's URL
-  : 'https://refraim-backend-e8c71717cd42.herokuapp.com'; // Your deployed Django server's URL
+const API_URL = process.env.NODE_ENV === 'development'
+    ? 'http://localhost:8000' // Your local Django server's URL
+    : 'https://refraim-backend-e8c71717cd42.herokuapp.com'; // Your deployed Django server's URL
 
 function AllConversations() {
     const [conversations, setConversations] = useState([])
-    let {user} = useContext(AuthContext)
+    let { user } = useContext(AuthContext)
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -40,40 +40,40 @@ function AllConversations() {
             <Typography variant="h1" color='primary' >Refraim History</Typography>
             <br />
             {loading ? (
-                <Typography variant='body1' id="convo-text">
-                Your Refraim History is loading...
-            </Typography>
-            ) :
-            conversations.length < 1 ? (
-                <>
-                <Typography variant='body1' id="convo-text">
-                    Complete your first Refraim Session to see your refraim history here <br />
+                <Typography variant='h2' id="convo-text">
+                    Your Refraim History is loading...
                 </Typography>
-                <br />
-                <Typography variant='body1' id="convo-text">
-                Start a new Refraim Session: <br />
-            </Typography>
-            <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                href='/pre-prompt'
-                style={{ marginTop: '1em' }} >
-                Begin
-            </Button>
-            </>
             ) :
-            conversations.reverse().map(conversation => (
-                <div className='history' key={conversation.id}>
-                    <Typography variant='h3' className='convo-text' >{new Date(conversation.created_at).toLocaleString()}</Typography>
-                    <br />
-                    <Typography className='convo-text' variant='body1'>Negative Thought: {conversation.prompt}</Typography>
-                    <br />
-                    <Typography className='convo-text' variant='body1'>Positive Refraim: {conversation.conclusion}</Typography>
-                    <Like conversationId={conversation.id} initialFavorite={conversation.is_favorite}/>
-                    <hr />                
-                </div>
-            ))}
+                conversations.length < 1 ? (
+                    <>
+                        <Typography variant='body1' id="convo-text">
+                            Complete your first Refraim Session to see your refraim history here <br />
+                        </Typography>
+                        <br />
+                        <Typography variant='body1' id="convo-text">
+                            Start a new Refraim Session: <br />
+                        </Typography>
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            href='/pre-prompt'
+                            style={{ marginTop: '1em' }} >
+                            Begin
+                        </Button>
+                    </>
+                ) :
+                    conversations.reverse().map(conversation => (
+                        <div className='history' key={conversation.id}>
+                            <Typography variant='h2' className='convo-text' >{new Date(conversation.created_at).toLocaleString()}</Typography>
+                            <br />
+                            <Typography className='convo-text' variant='body1'>Negative Thought: {conversation.prompt}</Typography>
+                            <br />
+                            <Typography className='convo-text' variant='body1'>Positive Refraim: {conversation.conclusion}</Typography>
+                            <Like conversationId={conversation.id} initialFavorite={conversation.is_favorite} />
+                            <hr />
+                        </div>
+                    ))}
             <br />
             <Nav />
         </div>

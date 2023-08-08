@@ -13,6 +13,7 @@ const API_URL = process.env.NODE_ENV === 'development'
 function AllConversations() {
     const [conversations, setConversations] = useState([])
     let {user} = useContext(AuthContext)
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetchConversations()
@@ -31,13 +32,19 @@ function AllConversations() {
         } catch (error) {
             console.error('Error:', error);
         }
+        setLoading(false)
     }
 
     return (
         <div className='history-section'>
             <Typography variant="h1" color='primary' >Refraim History</Typography>
             <br />
-            {conversations.length < 1 ? (
+            {loading ? (
+                <Typography variant='body1' id="convo-text">
+                Your Refraim History is loading...
+            </Typography>
+            ) :
+            conversations.length < 1 ? (
                 <>
                 <Typography variant='body1' id="convo-text">
                     Complete your first Refraim Session to see your refraim history here <br />

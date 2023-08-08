@@ -16,9 +16,10 @@ function RefraimSession() {
                 <br />
                 <div className="refraim-prompt" id="refraim-prompt">
                     
-                    <Typography variant='body1' className="convo-text">
-                        <img className='brain-icon' src={Brain_Chat} alt='Brain with arms and legs cheering' />Life can be tough. What negative thoughts are you having?
+                    <Typography variant='body1'>
+                        Life can be tough. What negative thoughts are you having?                         
                     </Typography>
+                    <img className='brain-icon' src={Brain_Chat} alt='Brain with arms and legs cheering' />
                 </div>
             </div>
             <ConversationBox />

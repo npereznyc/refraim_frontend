@@ -77,7 +77,6 @@ function Favorites() {
                     </div>
                 ))
             }
-
             <br />
             <Nav />
         </div>

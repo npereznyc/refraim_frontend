@@ -14,6 +14,7 @@ import { useTheme } from '@mui/material';
 import Complete from './Complete';
 import Favorites from './Favorites';
 import Settings from './Settings';
+import Home from './Home';
 
 
 function Main() {
@@ -36,6 +37,7 @@ function Main() {
         <Route path='/complete' element={!user ? <Navigate to="/welcome" /> : <Complete />} />
         <Route path='favorites/:id' element={!user ? <Navigate to="/welcome" /> : <Favorites />} />
         <Route path='settings/:id' element={!user ? <Navigate to="/welcome" /> : <Settings />} />
+        <Route path='home' element={!user ? <Navigate to="/welcome" /> : <Home />} />
       </Routes>
     </div>
   );

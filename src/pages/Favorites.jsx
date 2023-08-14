@@ -4,6 +4,7 @@ import { Typography } from '@mui/material';
 import Nav from '../components/Nav';
 import Like from '../components/Like';
 import { Button } from '@mui/material';
+import useFavorites from '../components/useFavorites';
 
 const API_URL = process.env.NODE_ENV === 'development'
     ? 'http://localhost:8000' // Your local Django server's URL
@@ -11,31 +12,8 @@ const API_URL = process.env.NODE_ENV === 'development'
 
 function Favorites() {
 
-    const [conversations, setConversations] = useState([])
     let { user } = useContext(AuthContext)
-    const [loading, setLoading] = useState(true);
-
-
-    useEffect(() => {
-        fetchFavorites()
-    }, [])
-
-    const fetchFavorites = async () => {
-        // let urlParts = window.location.pathname.split('/');
-        // let userId = urlParts[urlParts.length - 1]; 
-        try {
-            const response = await fetch(`${API_URL}/allconversations/${user.user_id || user.id}/favorites/`);
-            if (response.ok) {
-                const data = await response.json();
-                setConversations(data);
-            } else {
-                console.error('Error:', response);
-            }
-        } catch (error) {
-            console.error('Error:', error);
-        }
-        setLoading(false)
-    }
+    const {favorites, loading} = useFavorites(user.user_id || user.id)
 
     return (
         <div className='history-section'>
@@ -46,7 +24,7 @@ function Favorites() {
                     Your Favorite Refraims are loading...
                 </Typography>
             ) :
-                conversations.length < 1 ? (
+                favorites.length < 1 ? (
                     <>
                         <Typography variant='body1' id="convo-text">
                             You haven't saved any Refraims to your favorites yet! <br />
@@ -65,7 +43,7 @@ function Favorites() {
                         </Button>
                     </>
 
-                ) : conversations.reverse().map(conversation => (
+                ) : favorites.reverse().map(conversation => (
                     <div className='history' key={conversation.id}>
                         <Typography variant='h2' className='convo-text'>{new Date(conversation.created_at).toLocaleString()}</Typography>
                         <br />

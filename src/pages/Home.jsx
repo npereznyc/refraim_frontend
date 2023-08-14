@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { Button, CardContent, Typography, CardActions, Card } from '@mui/material';
 import { useNavigate } from 'react-router-dom'
 import AuthContext from '../auth';
+import SwipeableViews from 'react-swipeable-views';
+
 
 function Home() {
 
@@ -18,19 +20,17 @@ function Home() {
     // }
     return (
         <div className="homepage">
+            <Typography variant='h1' color="primary" gutterBottom>
+                Welcome!
+            </Typography>
             <Card sx={{ minWidth: 275 }}>
                 <CardContent>
                     <Typography variant='h2' color="primary" gutterBottom>
                         My Favorite Refraims
                     </Typography>
 
-                    <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                        adjective
-                    </Typography>
                     <Typography variant="body2">
-                        well meaning and kindly.
-                        <br />
-                        {'"a benevolent smile"'}
+                        (complete your first refraim session to save a favorite refraim here!)
                     </Typography>
                 </CardContent>
                 <CardActions>

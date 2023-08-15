@@ -60,7 +60,7 @@ function Home() {
                             <Typography variant="body2">
                                 (complete your first refraim session to save a favorite refraim here!)
                             </Typography></>)}
-                    {favorites.length === 0 && !loading && (
+                    {/* {favorites.length === 0 && !loading && (
                         <CardActions style={{ justifyContent: 'center' }}>
                             <Button
                                 type="submit"
@@ -71,7 +71,7 @@ function Home() {
                                 Begin
                             </Button>
                         </CardActions>
-                    )}
+                    )} */}
                 </CardContent>
 
                 <CardActions className='dots'>

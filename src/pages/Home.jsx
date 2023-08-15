@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { Button, CardContent, Typography, CardActions, Card } from '@mui/material';
-import { useNavigate } from 'react-router-dom'
 import AuthContext from '../auth';
 import SwipeableViews from 'react-swipeable-views';
 import useFavorites from '../components/useFavorites';
 import Nav from '../components/Nav';
+import loadingImage from '../assets/loading.svg'
+
 
 
 function Home() {
@@ -17,26 +18,58 @@ function Home() {
         setCurrentIndex(index);
     };
 
-    // const isLoggedIn = user !== null && user !== undefined;
-
-    // const handleButtonClick = () => {
-    //     if(isLoggedIn) {
-    //         navigate('/pre-prompt')
-    //     } else {
-    //         navigate('/welcome')
-    //     }
-    // }
     return (
         <div className="homepage">
             <Typography variant='h1' color="primary" gutterBottom>
                 Welcome!
             </Typography>
-            {loading ? (
-                <Typography variant='h2' id="convo-text">
-                    Your Favorite Refraims are loading...
-                </Typography>
-            ) :
-            favorites.length < 1 ? (<Card sx={{ minWidth: 275 }}>
+            <Card sx={{ minWidth: 275 }}>
+                <CardContent>
+                    <Typography variant='h2' color="primary" gutterBottom>
+                        My Favorite Refraims
+                    </Typography>
+                    {loading ? (
+                        <Typography variant='h2' id="convo-text">
+                            <div id="loading">{loading && <img height='30px' width='30px' src={loadingImage} className="loading" id="loading" alt='loading circles' />}</div>
+                        </Typography>
+                    ) : favorites.length >= 1 ? (
+                        <>
+                            <SwipeableViews
+                                index={currentIndex}
+                                onChangeIndex={(index) => setCurrentIndex(index)}
+                            >
+                                {favorites.map((favorite, index) => (
+                                    <div key={index}>
+                                        <Typography variant="body2">
+                                            {favorite.conclusion} {/* Render the favorite */}
+                                        </Typography>
+                                    </div>
+                                ))}
+                            </SwipeableViews>
+                            <div className='validation-buttons'>
+                                <Button disabled={currentIndex === 0} onClick={() => handleChangeIndex(currentIndex - 1)}>
+                                    Previous
+                                </Button>
+                                <Button disabled={currentIndex === favorites.length - 1} onClick={() => handleChangeIndex(currentIndex + 1)}>
+                                    Next
+                                </Button>
+                            </div>
+
+                        </>) : (
+                        <>
+                            <Typography variant="body2">
+                                (complete your first refraim session to save a favorite refraim here!)
+                            </Typography></>)}
+                </CardContent>
+
+                <CardActions className='dots'>
+                    {Array.from({ length: favorites.length }).map((_, index) => (
+                        <span key={index} className={index === currentIndex ? 'dot filled' : 'dot'}></span>
+                    ))}
+                </CardActions>
+            </Card>
+            <br />
+            <Card sx={{ minWidth: 275 }}>
                 <CardContent>
                     <Typography variant='h2' color="primary" gutterBottom>
                         New Refraim Session
@@ -46,60 +79,17 @@ function Home() {
                         Let me help you refraim your negative thoughts.
                     </Typography>
                 </CardContent>
-                <CardActions>
-                    <Button size="small">Begin</Button>
+                <CardActions style={{ justifyContent: 'center' }}>
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                        href='/pre-prompt'
+                        style={{ marginTop: '1em' }} >
+                        Begin
+                    </Button>
                 </CardActions>
-            </Card>) :
-                <Card sx={{ minWidth: 275 }}>
-                    <CardContent>
-                        <Typography variant='h2' color="primary" gutterBottom>
-                            My Favorite Refraims
-                        </Typography>
-
-                        <SwipeableViews
-                            index={currentIndex}
-                            onChangeIndex={(index) => setCurrentIndex(index)}
-                        >
-                            {favorites.map((favorite, index) => (
-                                <div key={index}>
-                                    <Typography variant="body2">
-                                        {favorite.conclusion} {/* Render the favorite */}
-                                    </Typography>
-                                </div>
-                            ))}
-                        </SwipeableViews>
-                        <Button disabled={currentIndex === 0} onClick={() => handleChangeIndex(currentIndex - 1)}>
-                            Previous
-                        </Button>
-                        <Button disabled={currentIndex === favorites.length - 1} onClick={() => handleChangeIndex(currentIndex + 1)}>
-                            Next
-                        </Button>
-                    </CardContent>
-                    <CardActions>
-                        {Array.from({ length: favorites.length }).map((_, index) => (
-                            <span key={index} className={index === currentIndex ? 'dot filled' : 'dot'}></span>
-                        ))}
-                    </CardActions>
-                </Card>
-            }
-
-            {/* <Card sx={{ minWidth: 275 }}>
-                <CardContent>
-                    <Typography variant='h2' color="primary" gutterBottom>
-                        My Favorite Refraims
-                    </Typography>
-
-                    <Typography variant="body2">
-                        (complete your first refraim session to save a favorite refraim here!)
-                    </Typography>
-                </CardContent>
-                <CardActions>
-                    <Button size="small">Learn More</Button>
-                </CardActions>
-            </Card> */}
-
-
-
+            </Card>
             <Nav />
         </div>
     );

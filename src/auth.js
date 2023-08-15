@@ -68,7 +68,7 @@ export const AuthProvider = ({ children}) => {
   
                 // Decode the access token
                 // const decodedToken = jwt_decode(access);
-                navigate('/pre-prompt');
+                navigate('/home');
                 // const username = decodedToken.username;
                 // const userId = decodedToken.user_id;
   

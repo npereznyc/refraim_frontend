@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import AuthContext from '../auth';
 import { Typography } from '@mui/material';
 import Nav from '../components/Nav';
@@ -6,9 +6,6 @@ import Like from '../components/Like';
 import { Button } from '@mui/material';
 import useFavorites from '../components/useFavorites';
 
-const API_URL = process.env.NODE_ENV === 'development'
-    ? 'http://localhost:8000' // Your local Django server's URL
-    : 'https://refraim-backend-e8c71717cd42.herokuapp.com'; // Your deployed Django server's URL
 
 function Favorites() {
 

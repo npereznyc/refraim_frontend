@@ -46,12 +46,15 @@ function Home() {
                                     </div>
                                 ))}
                             </SwipeableViews>
-                            <Button disabled={currentIndex === 0} onClick={() => handleChangeIndex(currentIndex - 1)}>
-                                Previous
-                            </Button>
-                            <Button disabled={currentIndex === favorites.length - 1} onClick={() => handleChangeIndex(currentIndex + 1)}>
-                                Next
-                            </Button>
+                            <div className='validation-buttons'>
+                                <Button disabled={currentIndex === 0} onClick={() => handleChangeIndex(currentIndex - 1)}>
+                                    Previous
+                                </Button>
+                                <Button disabled={currentIndex === favorites.length - 1} onClick={() => handleChangeIndex(currentIndex + 1)}>
+                                    Next
+                                </Button>
+                            </div>
+
                         </>) : (
                         <>
                             <Typography variant="body2">
@@ -59,7 +62,6 @@ function Home() {
                             </Typography></>)}
                     {favorites.length === 0 && !loading && (
                         <CardActions style={{ justifyContent: 'center' }}>
-                            {/* <Button size="small" href='/pre-prompt'>Begin</Button> */}
                             <Button
                                 type="submit"
                                 variant="contained"
@@ -72,10 +74,32 @@ function Home() {
                     )}
                 </CardContent>
 
-                <CardActions>
+                <CardActions className='dots'>
                     {Array.from({ length: favorites.length }).map((_, index) => (
                         <span key={index} className={index === currentIndex ? 'dot filled' : 'dot'}></span>
                     ))}
+                </CardActions>
+            </Card>
+            <br />
+            <Card sx={{ minWidth: 275 }}>
+                <CardContent>
+                    <Typography variant='h2' color="primary" gutterBottom>
+                        New Refraim Session
+                    </Typography>
+
+                    <Typography variant="body2">
+                        Let me help you refraim your negative thoughts.
+                    </Typography>
+                </CardContent>
+                <CardActions style={{ justifyContent: 'center' }}>
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                        href='/pre-prompt'
+                        style={{ marginTop: '1em' }} >
+                        Begin
+                    </Button>
                 </CardActions>
             </Card>
             <Nav />

@@ -36,8 +36,7 @@ function Home() {
                         <>
                             <SwipeableViews
                                 index={currentIndex}
-                                onChangeIndex={(index) => setCurrentIndex(index)}
-                            >
+                                onChangeIndex={(index) => setCurrentIndex(index)} >
                                 {favorites.map((favorite, index) => (
                                     <div key={index}>
                                         <Typography variant="body2">

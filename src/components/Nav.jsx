@@ -4,6 +4,7 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import RestoreIcon from '@mui/icons-material/Restore';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import SettingsIcon from '@mui/icons-material/Settings';
+import HomeIcon from '@mui/icons-material/Home';
 import Paper from '@mui/material/Paper';
 import ChatIcon from '@mui/icons-material/Chat';
 import AuthContext from '../auth';
@@ -23,10 +24,10 @@ export default function Nav() {
     <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
     <BottomNavigation showLabels value={value} onChange={handleChange}>
       <BottomNavigationAction
-        label="Refraim"
-        value="refraim"
-        href='/pre-prompt'
-        icon={<ChatIcon />}
+        label="Home"
+        value="home"
+        href='/home'
+        icon={<HomeIcon />}
       />
       <BottomNavigationAction
         label="History"

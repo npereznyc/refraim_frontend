@@ -105,3 +105,9 @@ text-align: right;
 .filled {
   background-color: #FFCA3B;
 }
+
+@media only screen and (max-width: 480px) {
+  .validation-buttons {
+      display: none;
+  }
+}

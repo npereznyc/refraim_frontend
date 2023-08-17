@@ -6,7 +6,7 @@ function Welcome() {
     return (
         <div className="welcome">
             <h1>Create your account to get started</h1>
-            <GoogleLogin />
+            {/* <GoogleLogin /> */}
             <br />
             <Button
                 type="submit"

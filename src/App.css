@@ -82,11 +82,12 @@ text-align: right;
   margin-bottom: 100px;
 }
 
-.validation-buttons {
+.validation-buttons, .yes-no-buttons {
   display: flex;
   gap: 10px;
   justify-content: center;
 }
+
 
 .dots {
   display: flex;
@@ -107,7 +108,7 @@ text-align: right;
 }
 
 @media only screen and (max-width: 480px) {
-  .validation-buttons {
+  .yes-no-buttons {
       display: none;
   }
 }

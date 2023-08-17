@@ -45,7 +45,7 @@ function Home() {
                                     </div>
                                 ))}
                             </SwipeableViews>
-                            <div className='validation-buttons'>
+                            <div className='yes-no-buttons'>
                                 <Button disabled={currentIndex === 0} onClick={() => handleChangeIndex(currentIndex - 1)}>
                                     Previous
                                 </Button>

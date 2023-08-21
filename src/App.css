@@ -68,6 +68,11 @@ text-align: right;
   float: right;
 }
 
+.large-brain{
+  margin-top: 50px;
+  margin-bottom: 60px;
+}
+
 .icon-dash {
   display: flex;
   align-items: center;

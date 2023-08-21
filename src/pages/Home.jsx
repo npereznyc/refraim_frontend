@@ -5,8 +5,7 @@ import SwipeableViews from 'react-swipeable-views';
 import useFavorites from '../components/useFavorites';
 import Nav from '../components/Nav';
 import loadingImage from '../assets/loading.svg'
-
-
+import Brain_Wink from '../assets/Brain_Wink.png'
 
 function Home() {
 
@@ -89,6 +88,7 @@ function Home() {
                     </Button>
                 </CardActions>
             </Card>
+            <img className='large-brain' src={Brain_Wink} alt='Brain with arms and legs winking' />
             <Nav />
         </div>
     );

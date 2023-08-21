@@ -3,6 +3,7 @@ import { Button, CardContent, Typography, CardActions, Card } from '@mui/materia
 import AuthContext from '../auth';
 import SwipeableViews from 'react-swipeable-views';
 import useFavorites from '../components/useFavorites';
+import useUserDetails from '../components/userDetails';
 import Nav from '../components/Nav';
 import loadingImage from '../assets/loading.svg'
 import Brain_Wink from '../assets/Brain_Wink.png'
@@ -10,6 +11,7 @@ import Brain_Wink from '../assets/Brain_Wink.png'
 function Home() {
 
     let { user } = useContext(AuthContext)
+    const {userDetails} = useUserDetails(user.user_id || user.id)
     const [currentIndex, setCurrentIndex] = useState(0)
     const { favorites, loading } = useFavorites(user.user_id || user.id)
 
@@ -19,10 +21,14 @@ function Home() {
 
     return (
         <div className="homepage">
-            <Typography variant='h1' color="primary" gutterBottom>
-                Welcome!
-            </Typography>
-            <Card sx={{ minWidth: 275 }}>
+            {loading ? '' : userDetails ?(
+              <Typography variant='h1' color="primary" gutterBottom>
+            Welcome, {userDetails.first_name }
+            </Typography>   
+            ) :'' }
+            
+            <br />
+            <Card>
                 <CardContent>
                     <Typography variant='h2' color="primary" gutterBottom>
                         My Favorite Refraims
@@ -67,7 +73,7 @@ function Home() {
                 </CardActions>
             </Card>
             <br />
-            <Card sx={{ minWidth: 275 }}>
+            <Card>
                 <CardContent>
                     <Typography variant='h2' color="primary" gutterBottom>
                         New Refraim Session

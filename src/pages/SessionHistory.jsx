@@ -40,7 +40,12 @@ function AllConversations() {
 
     return (
         <div className='history-section'>
-            <Typography variant="h1" color='primary' >Refraim History</Typography>
+            {/* <Typography variant="h1" color='primary' >Refraim History</Typography> */}
+            {loading ? '' : userDetails ? (
+                <Typography variant='h1' color="primary" gutterBottom>
+                    {userDetails.first_name}'s Refraim History
+                </Typography>
+            ) : ''}
             <br />
             {loading ? (
                 <Typography variant='h2' id="convo-text">

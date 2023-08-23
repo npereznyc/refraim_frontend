@@ -5,6 +5,8 @@ import Nav from "../components/Nav";
 import { Typography } from "@mui/material";
 import Like from "../components/Like";
 import { Button } from "@mui/material";
+import useUserDetails from '../components/userDetails';
+
 
 const API_URL = process.env.NODE_ENV === 'development'
     ? 'http://localhost:8000' // Your local Django server's URL
@@ -14,6 +16,7 @@ function AllConversations() {
     const [conversations, setConversations] = useState([])
     let { user } = useContext(AuthContext)
     const [loading, setLoading] = useState(true);
+    const { userDetails } = useUserDetails(user.user_id || user.id)
 
     useEffect(() => {
         fetchConversations()

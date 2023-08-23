@@ -5,16 +5,22 @@ import Nav from '../components/Nav';
 import Like from '../components/Like';
 import { Button } from '@mui/material';
 import useFavorites from '../components/useFavorites';
+import useUserDetails from '../components/userDetails';
 
 
 function Favorites() {
 
     let { user } = useContext(AuthContext)
     const {favorites, loading} = useFavorites(user.user_id || user.id)
+    const { userDetails } = useUserDetails(user.user_id || user.id)
 
     return (
         <div className='history-section'>
-            <Typography variant="h1" color='primary' >Favorites</Typography>
+            {loading ? '' : userDetails ? (
+                <Typography variant='h1' color="primary" gutterBottom>
+                    {userDetails.first_name}'s Favorite Refraims
+                </Typography>
+            ) : ''}
             <br />
             {loading ? (
                 <Typography variant='h2' id="convo-text">
